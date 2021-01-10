@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5_Funcions-arrow</title>
+</head>
+<body>
+    <script>
+
+        function devolver() {           //
+            return 10;                  //
+        }                               //
+                                        // Això són funcions equivalents SENSE paràmetres
+        const devolver2 = () => 10;     //
+                                        //
+        const devolver3 = _ =>10;       //
+
+        console.log({"funció antiga": devolver(), "funció arrow amb ()": devolver2(), "funció arrow amb _": devolver3()});
+
+
+        function mult(a, b) {           //
+            return a*b;                 //
+        }                               //
+                                        // Això són funcions equivalents AMB paràmetres
+        const mult2 = (a,b) => a*b      //
+                                        //
+        const mult3 = (a,b) => {        //
+            return a*b;                 //
+        }                               //
+
+        console.log({"funció antiga": mult(3,4), "funció arrow amb ()": mult2(3,4), "funció arrow amb _": mult3(3,4)});
+
+
+        // LES FUNCIONS ARROW S'HAN DE DEFINIR ABANS DE SER UTILITZADES:
+        
+        // cubo1() és una funció que agafa un paràmetre i retorna per la consola la frase amb el seu resultat
+        const cubo = (a) => {
+            console.log(`${a} elevat al cub és ${a**3}`);
+        }
+        // cubo2() és una funció que agafa un paràmetre i retorna el valor del seu resultat
+        const cubo2 = (a) => {
+            return a**3;
+        }
+        const cubo3 = (a) => console.log(`${a} elevat al cub és ${a**3}`);
+
+        v = 300
+        const velocitat = (v) => v* 10/36
+        
+        const triangle = (b,h) => b*h/2
+
+        function cercle(r) {
+            
+        }
+
+        cubo(3);            // eleva al cub
+        velocidad(300);     // transforma km/h en m/s
+        triangulo(5,18);    // area d'un triangle
+        circulo(4);         // calcula l'area i el perímetre d'un cercle (el valor de pi es pot obtenir amb Math.PI)
+        
+        
+    </script>
+</body>
+</html>

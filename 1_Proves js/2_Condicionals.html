@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2_Condicionals</title>
+</head>
+<body>
+    <script>
+        // condicional if
+        
+        var condició = true // variable boleana amb valor true (1)
+        
+        if(condició){
+            console.log("La condició s'ha complert");
+        } else{
+            console.log("La condició no s'ha complert");
+        }
+        
+        if(!condició){ //                               El signe "!" indica que admetrà el contrari de la condició
+        console.log("La condició s'ha complert");
+    } else{
+        console.log("La condició no s'ha complert");
+    }
+    console.log("----------------------------------------");
+    
+    
+    var edat = 14
+    if (edat < 7){
+        console.log("Pots jugar a jocs amb PEGI AP");
+    } else if (edat < 13){
+        console.log("Pots jugar a jocs amb PEGI 7");
+    } else if (edat < 18){
+        console.log("Pots jugar a jocs amb PEGI 13");
+    } else {
+        console.log("Pots jugar a jocs amb PEGI 18");
+    }
+    console.log("----------------------------------------");
+    
+    
+    var nota = 8.5
+    // Quan s'utilitzin condicions, fer testings/comprovar amb els extrems per veure si es compleixen correctament.
+    if (nota < 5){
+        console.log("Suspès!");
+    } else if (5 <= nota & nota < 7){
+        console.log("Aprovadeta");
+    } else if (7 <= nota & nota < 8.5){
+        console.log("Noble notable");
+    } else {
+        console.log("Excel·lència!");
+    }
+    console.log("----------------------------------------");
+    
+    
+    var nota = prompt("quina és la teva nota?");
+    //    Agafa la nota d'un diàleg
+    nota_n = parseFloat(nota);
+    console.log([nota, nota_n]);
+    
+    if (isNaN(nota_n) || nota_n > 10 || nota_n < 0){
+        console.log(nota + " No és una nota vàlida");
+    } else {
+        if (nota < 5){
+            console.log("Suspès!");
+        } else if (5 <= nota & nota < 7){
+            console.log("Aprovadeta");
+        } else if (7 <= nota & nota < 8.5){
+            console.log("Noble notable");
+        } else {
+            console.log("Excel·lència!");
+        }
+    }
+    console.log("----------------------------------------");
+    
+    
+    var numero = 113
+    
+    // positiu o negatiu
+    if (0 < numero) console.log("El número és POSITIU");
+    else if (numero < 0) console.log("El número és NEGATIU")
+    else console.log("El número no té signe definit")
+    // parell o imparell
+    if (numero % 2 == 0) console.log("El número és PARELL");
+    else console.log("El número és IMPARELL");
+    // múltiple de 5 o no
+    if (numero % 5 == 0) console.log("El número és MÚLTIPLE DE 5");
+    else console.log("El número NO és MÚLTIPLE DE 5");
+    // múltiple de 10 o no
+    if (numero % 10 == 0) console.log("El número és MÚLTIPLE DE 10");
+    else console.log("El número NO és MÚLTIPLE DE 10");
+    // major de 100 o no
+    if (100 < numero) console.log("El número és MÉS GRAN DE 100");
+    else if (numero < 100) console.log("El número és MÉS PETIT DE 100");
+    else console.log("El número ÉS EL 100");
+    console.log("----------------------------------------");
+    
+    
+    // Colors in console: "%c" per indicar que comença el text amb estil, estil CSS en un altre argument.
+    console.log("%cAixò és un missatge en vermell", "color: red");
+    console.log("%cAixò és un missatge gran", "font-family: Verdana; font-size: 2em");
+    console.log("%cAixò és un missatge emmarcat", "color: white; background-color: green; padding: 10px");
+    console.log("%cL%cG%cB%cT%cI%cQ", "color:red","color:orange","color:yellow","color:green","color:blue","color:purple");
+    console.log("----------------------------------------");
+    
+    
+    // DEBUGGER: Fa parades per debuguejar per parts.
+    debugger;
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10_bucle-for</title>
+</head>
+<body>
+    
+    <script>
+        
+        for (let i = 0; i <= 10; i++) {
+            
+            // aquí el teu codi (ha de mostrar a la consola la taula de multiplicar del 3)
+            console.log(`3 multiplicat per ${i} és ${i * 3}`);
+            
+            // Una altra manera:
+            // let num = i+1;
+            // console.log(`3 multiplicat per ${num} és ${num * 3}`);
+            
+        }
+        console.log("----------------------------------------------------------------------------");
+        
+        // Bucle de 0 a 100 que avisi amb un alert() al 50 i al 100:
+        for (let i = 0; i <= 100; i++) {
+            // console.log(i);
+            if (i == 50) {
+                // alert(`Ep! Aquest número és el ${i}!`);
+                console.log(`%cEp! Aquest número és el ${i}!`, `color: red; font-weight: bold`);
+            } else if (i == 100) {
+                // alert(`Ep! Aquest número és el ${i}!`);
+                console.log(`%cEp! Aquest número és el ${i}!`, `color: red; font-weight: bold`);
+            }
+        }
+        console.log("----------------------------------------------------------------------------");
+        
+        // Mostra els nombres parells del 0 al 20:
+        // (tres versions/maneres diferents:)
+
+        // for (let i = 0; i <= 20; i++) {
+        //     if (i % 2 == 0) { console.log(i); }
+        // }
+
+        for (let i = 0; i <= 20; i+=2) {
+            console.log(i);
+        }
+
+        // for (let i = 0; i <= 20; i++) {
+        //     if (i % 2 == 0 & i !== 0) {
+        //         console.log(i);
+        //     } else if (i == 0) {
+        //         console.log(`%cAques nombre és el 0!`, `color: orange; font-weight: bold`);
+        //     }
+        // }
+        console.log("----------------------------------------------------------------------------");
+
+        // Recorre nombres mostra el seleccionat (amb un prompt) de manera diferent (amb CSS) a la consola:
+
+        // var num = parseInt(prompt("Quin número vols pintar?"));
+
+        // for (let i = 1; i <= 25; i++) {
+        //     if (i == num) {console.log(`%c${i}`, `color: orange; font-weight: bold`);
+        //     } else {console.log(i);
+        //     }
+        // }
+        console.log("----------------------------------------------------------------------------");
+
+        // Multiplicadora de l'1 al 9:
+
+        for (let i = 1; i <= 9; i++) {
+            for (let h = 0; h <= 10; h++) {
+            console.log(`${i} multiplicat per ${h} és ${h*i}`);
+            }
+        }
+        console.log("----------------------------------------------------------------------------");
+
+        var num2 = parseInt(prompt("Escull un número entre l'1 i el 20"));
+
+        for (let i = 1; i <= 20; i++) {
+            if (i == num2) {
+                console.log(i + " bucle aturat");
+                break;
+            } else {
+                console.log();
+            }
+        }
+        console.log("----------------------------------------------------------------------------");
+
+    </script>
+    
+</body>
+</html>

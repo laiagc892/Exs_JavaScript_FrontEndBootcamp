@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13_Exercicis-repàs</title>
+
+    <script src="./13_Exercicis-repàs(head).js"></script>
+
+</head>
+<body>
+    Aquí hi ha el contingut de la pàgina.
+    
+    <script>
+        // Així es posa un comentari d'una sola línia
+
+        /* Així es posa
+            un comentari
+            en més d'una línia */
+        
+        // consoe.log() mostra el text a la consola (F12):
+        console.log("Javascript carregat des de l'etiqueta <script> dins el <body>");
+
+        document.write("<p>Això escriu dins el body</p>");
+
+        console.log("--------------------------------------------------------------");
+        console.log("---------------------------VARIABLES---------------------------");
+        console.log("--------------------------------------------------------------");
+
+        var a;              // declara una variable (pot ser String, Number, Array, Object, Boolean)
+
+        a = 5;              // assigna un valor a una variable (=, +=, -=, *=, /=)
+
+        var b = 10;         // declara i assigna una variable
+
+        var c, d, e;        // declara més d'una variable
+
+        c = a;              // assigna a una variable el valor d'una altra
+        d = b;
+        e = c + d;
+
+        console.log(e);     // fa operacions amb variables (+, -, *, /, **, %)
+
+        console.log("La suma de " + c + " i " + d + " és " + e);
+        console.log('Les variables string també es poden definir amb cometes simples (apòstrofs)');
+        console.log(`Si hem de posar variables dins una string és més fàcil amb un literal template: ${c} + ${d} = ${e}`);
+
+        console.log("--------------------------------------------------------------");
+        console.log("---------------------------STRINGS---------------------------");
+        console.log("--------------------------------------------------------------");
+
+        console.log("Això és una \nstring amb \nsalts de línia");   // els caràcters \n s'interpreten com un salt de línia
+
+        console.log(`       Dins els template literal
+        s'interpreten els espais
+        i els salts de línia`);                                     // els template literal funcionen com el <pre> a HTML
+
+        var nom, cognom, edat;
+
+        nom = "Manuel";
+        cognom = "Pérez";
+        edat = "47";
+
+        var frase = `El ${nom} ${cognom} té ${edat} anys`;
+
+        console.log(frase);
+
+        console.log("%cAquest missatge té CSS", "color: orange; font-style: italic");
+
+        console.log("--------------------------------------------------------------");
+        console.log("---------------------------FUNCIONS---------------------------");
+        console.log("--------------------------------------------------------------");
+
+        function funcioAmbReturn(nom) {         // Definició d'una funció
+            return `Hola, ${nom}`;              // "return" acaba l'execució de la funció i retorna el valor indicat
+        }
+
+        function funcioSneseReturn(params) {
+            console.log(`Hola, ${nom}`);        // Aquí la funció acaba quan s'acaba el codi
+        }
+        
+        funcioAmbReturn("Eva");                 // Aquesta línia només perd el temps
+
+        funcioSneseReturn("Ricardo");           // Aquesta mostra per la consola "Hola, Ricardo"
+
+        var saludoEva = funcioAmbReturn("Eva"); // Guardem en una variable el que retorna la funció
+        console.log(saludoEva);                 // i aquí ho mostrem a la consola
+
+        // ----------------------------------------------------------------------------
+        
+        var resultat;
+
+        function suma(a,b,c,d,e) {
+            var resultat = a;                   // Inicialitza un acumulador del resultat
+
+            resultat += b;                      //
+            resultat += c + d;                  // diferents maneres de sumar els paràmetres al resultat
+            resultat = resultat + e;            //
+
+            return resultat;                    // Retorna el resultat
+        }
+
+        function lasVegas(sexo,drogas,dinero) { // els paràmetres i les variables de dins d'una
+            var bodas;                          // funció només estan definides en l'àmbit de la funció
+            dinero = 0;                         // "lo que pasa en lasVegas() se queda en lasVegas()"
+
+            return dinero;                      // la única cosa que surt de lasVegas() és zero (return)
+        }
+
+        console.log(lasVegas("poco", "LSD, MDMA, cocaína", 1000));      // això mostra "0" per la consola
+
+        // ----------------------------------------------------------------------------
+
+        var nombre = "Omar";
+
+        function modificarNombre(nombre2) {     // Funció que modifica una variable externa
+            nombre = nombre2;                   // Assigna a la variable nombre el valor del paràmetre introduït
+        }
+
+        modificarNombre("Óscar");
+
+        console.log(nombre);
+
+        // ----------------------------------------------------------------------------
+
+        function modificarNombre2() {
+            nombre = "Sergi";                   // Assigna a la variable nombre l valor de Sergi
+        }
+
+        modificarNombre2();
+
+        console.log(nombre);
+
+        // ----------------------------------------------------------------------------
+
+        function nomCognoms(nom, cognom1, cognom2) {
+            return `${nom} ${cognom1} ${cognom2}`
+        }
+
+        function saludarNomCognoms(n, c1 = "Sánchez", c2 ="López") {
+            var nomComplet = nomCognoms(n, c1, c2);
+
+            console.log("El teu nom és " + nomComplet);
+        }
+
+        saludarNomCognoms("Yifei", "Báez", "Churión");
+
+        saludarNomCognoms("Genís", "Batllori");
+
+        console.log("--------------------------------------------------------------");
+        console.log("---------------------------FUNCIONS ARROW---------------------------");
+        console.log("--------------------------------------------------------------");
+
+        const funcioSenseParam = () => {                    // Aquesta variable immutable és una funció (arrow)
+            return "valor retornat de la funció arrow";     // La declaració return FINALITZA l'execució de la funció
+            console.log("Funció excutada");                 // Si vull fer un console.log() per demanar debugar dins una funció, sempre abans del return. Tot el que es posi després del return no s'executarà.
+        }
+
+        funcioSenseParam();                         // Això no fa res
+
+        console.log(funcioSenseParam());            // Això pinta a la consola el valor retornat per la funció
+
+        // ----------------------------------------------------------------------------
+
+        const funcioAmbParam = (x,y) => {           // Aquesta variable immutable és una funció (arrow)
+            return "" + x + x + x + y + y + y;      // Afegir una string buida "" al principi fa que els símbols + siguin concatenacions de strings
+        }
+
+        console.log(funcioAmbParam(3, 5));          // Això pinta a la consola el valor retornat per la funció
+
+        // ----------------------------------------------------------------------------
+
+        const funcioReturnSolo = (base,exp) => base ** exp;     // Si després de la fletxa només posem un statement, retorna aquest valor com si tingués un return.
+
+        var potencia = funcioReturnSolo(3, 5);      // Això assigna en valor retornat per la funció a la variable potència
+        console.log(potencia);
+
+        // ----------------------------------------------------------------------------
+        
+        var diners;
+
+        const afegirDiners = (quantitat) => {
+            diners = quantitat;
+        }
+        
+        afegirDiners(1000);
+
+        console.log(diners);
+
+        // ----------------------------------------------------------------------------
+
+        // function mayusMinus(string, mode = "M") {       // Podem fer funcions amb "modes" afegint un paràmetre que ens serveixi per sel·leccionar quina part del codi s'executa.
+        //     if (mode == "M") {
+        //         return string.toUppercase();
+        //     } else if (mode == "m") {
+        //         return string.toLowercase();
+        //     } else {
+        //         console.log(`%cEl mode introduït no és vàlid`, `color: red`);
+        //     }
+        // }
+
+        // console.log(mayusMinus("Omar", "M"));                   // PQ NO FUNCIONAAAAAAAAAAAAAA?¿?¿?¿?
+
+
+        console.log("--------------------------------------------------------------");
+
+        console.log("--------------------------------------------------------------");
+        console.log("---------------------------CONDICIONALS---------------------------");
+        console.log("--------------------------------------------------------------");
+
+        condicio = true;
+
+        condicio = "10" == 10;
+
+        if (condicio) {        // La condició d'una estructura condicional ha de ser una variable o operació que tingui resultat true o false
+            console.log("%cLa condició era %ctrue", "color: green", "color green; font-style: italic");
+        } else {
+            console.log("%cLa condició era %cfalse", "color: red", "color red; font-style: italic");
+        }
+
+
+        console.log("--------------------------------------------------------------");
+        console.log("---------------------------MÈTODES NUMBERS---------------------------");
+        console.log("--------------------------------------------------------------");
+
+
+
+        console.log("--------------------------------------------------------------");
+        console.log("---------------------------MÈTODES STRINGS---------------------------");
+        console.log("--------------------------------------------------------------");
+
+        
+    </script>
+
+
+    <script src="./13_Exercicis-repàs.js"></script>
+
+
+    <button type="button" onclick="document.write(`Això s'ha escrit amb document.write() després de carregar la pàgina`)">Executa <i>document.write</i></button>
+</body>
+</html>

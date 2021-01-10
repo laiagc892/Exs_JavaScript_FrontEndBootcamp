@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proves_Condicionals</title>
+</head>
+<body>
+    <script>
+        
+        // SWITCH:
+        var color = "vermell";
+        
+        switch (color){
+            case "vermell":
+            console.log("El foc és vermell");
+            break;                      // El "break" es posa pq et surti només l'opció corresponent, sinó els posem a cada opció, ens apareixeran totes.
+            case "blau":
+            console.log("El cel és blau");
+            break;
+            case 42:
+            console.log("The answer to univers, life and everything");
+            break;
+            default:
+            console.log("Cap de les anteriors");
+        }
+        console.log("----------------------------------------");
+        
+        
+        console.log("Quin dia és avui?");   // Sempre que hi hagi un punt "." + alguna paraula + parèntesis "()", aquesta paraula és un "MÈTODE" de l'element que hi ha abans del punt.
+        
+        var data = new Date();              // Això és un objecte, del que pots agafar informació. (instanciat)
+        // var data2 = Date();              // Això és una cadena de caràcters, de la qual no pots agafar res.
+        
+        var dia = data.getDay();            // Això agafa el dia de la setmana de l'objecte data (que és una instància de Date())
+        // var dia2 = data.getDay();        // Això no funciona pqerquè data2 no és un objecte amb el mètode .getDay()
+        
+        switch (dia) {
+            case 0:
+            console.log("Diumnege");
+            break;
+            case 1:
+            console.log("Dilluns");
+            break;
+            case 2:
+            console.log("Dimarts");
+            break;
+            case 3:
+            console.log("Dimecres");
+            break;
+            case 4:
+            console.log("Dijous");
+            break;
+            case 5:
+            console.log("Divendres");
+            break;
+            case 6:
+            console.log("Dissabte");
+            break;
+            default:
+        }
+        
+        
+        var dia_set;
+        
+        switch (dia) {
+            case 0:
+            dia_set = "Diumnege";
+            break;
+            case 1:
+            dia_set = "Dilluns";
+            break;
+            case 2:
+            dia_set = "Dimarts";
+            break;
+            case 3:
+            dia_set = "Dimecres";
+            break;
+            case 4:
+            dia_set = "Dijous";
+            break;
+            case 5:
+            dia_set = "Divendres";
+            break;
+            case 6:
+            dia_set = "Dissabte";
+            break;
+            default:
+        }
+        console.log(`Avui és ${dia_set}`);
+        console.log("----------------------------------------");
+        
+        
+        // Funcions són trossets de codi empaquetats en una etiqueta (tot allò que tingui un parèntesi després?)
+        // Cada llenguatge de programació té la seva manera d'escriure funcions, p.e. a JaavaScript s'escriuren normalment amb la segona paraula junta començant en majúscula: diaSet
+        
+        var data = new Date();
+        var day = data.getDay();
+        
+        var day_week = numToDay(day);
+        
+        function numToDay(num) {
+            let day;
+            
+            switch (num) {
+                case 0:
+                day = "Diumnege";
+                break;
+                case 1:
+                day = "Dilluns";
+                break;
+                case 2:
+                day = "Dimarts";
+                break;
+                case 3:
+                day = "Dimecres";
+                break;
+                case 4:
+                day = "Dijous";
+                break;
+                case 5:
+                day = "Divendres";
+                break;
+                case 6:
+                day = "Dissabte";
+                break;
+                default:
+            }
+            return day;
+        }
+        console.log(`Avui és ${numToDay(day)}, sortit d'una funció`);
+        console.log("----------------------------------------");
+        
+    </script>
+</body>
+</html>

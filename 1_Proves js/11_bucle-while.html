@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11_bucle-while</title>
+</head>
+<body>
+    
+    <script>
+        
+        // El bucle WHILE només necessita una condició, que mentres es compleixi, s'executarà sempre.
+        // ⚠️ COMPTE! És perillós ques s'entri en bucles eterns, es pot penjar.
+        // El while pot ser com un bucle For si s'acoten les repeticions: amb una variable definida abans de bucle, la condició per seguir en el while i el canvi en l'index a cada repetició.
+
+        // EXEMPLE inicial:
+        
+        var i = 0
+        while (i < 10) {                        // vigilar no posar una condició que sigui sempre certa, es penjarà.
+            console.log("Bucle while " + i);
+            i++;
+        }
+        console.log("----------------------------------------------------------------------------");
+        
+        // Recorre nombres mostra el seleccionat (amb un prompt) de manera diferent (amb CSS) a la consola:
+        
+        var num = parseInt(prompt("Quin número vols pintar?"));
+        var i = 1
+        while (i <= 25) {
+            if (i == num) {console.log(`%c${i}`, `color: orange; font-weight: bold`);
+            } else {console.log(i);}
+            i++;
+        }
+        console.log("----------------------------------------------------------------------------");
+    
+        // Multiplicadora de l'1 al 9:
+    
+        var i = 1                       // Inicialitzo la taula al principi
+            while (i <= 9) {
+                let h = 0;              // Inicialitzo el primer valor de la taula
+                while (h <= 10) {
+                console.log(`${i} multiplicat per ${h} és ${h*i}`);
+                h++;
+            }
+            i++;
+            console.log("------------------------------");
+        }
+        console.log("----------------------------------------------------------------------------");
+        
+        // Mostra els nombres parells del 0 al 20:
+
+        var i = 0
+        while (i <= 20) {
+            console.log(i);
+            i+=2;
+        }
+        console.log("----------------------------------------------------------------------------");
+        
+</script>
+
+</body>
+</html>

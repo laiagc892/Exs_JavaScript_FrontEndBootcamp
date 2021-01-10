@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12_bucle-while-2</title>
+</head>
+<body>
+    
+    <script>
+        
+        // calcular potències (sense usar ** ni Math.pow())
+        
+        var a = 3;
+        var b = 5;
+        
+        console.log(`${a} elevat a ${b} és ${potencia(a,b)}`);
+        
+        // definiu aquí la funció
+        
+        
+        function potencia(base,exp) {
+            var cont = 0;           // cont és un contador que guarda les vegades que hem passat pel bucle
+            var res = 1;            // resultat inicialitzat a 1 perquè qualsevo numero elevat a 0 és 1
+
+            while (cont < exp) {    // cont : 0 1 2 3 4 (repeteix l'operació 5 vegades)
+                res *= base;
+                cont++;
+            }
+
+            return res;
+        }
+
+        // un pèl diferent:
+        function potencia(base,exp) {
+            var cont = 1;           // cont és un contador que guarda les vegades que hem passat pel bucle
+            var res = 1;            // resultat inicialitzat a 1 perquè qualsevo numero elevat a 0 és 1
+
+            while (cont <= exp) {    // cont : 1 2 3 4 5 (repeteix l'operació 5 vegades)
+                res *= base;
+                cont++;
+            }
+
+            return res;
+        }
+        
+        console.log("----------------------------------------------------------------------------");
+        
+
+        // calcular factorial (N!)
+        
+        var c = 7;
+        
+        console.log(`${c} factorial (${c}!) és ${factorial(c)}`)
+        
+        // definiu aquí la funció
+        function factorial(n) {
+            var cont = 0;
+            var res = 1;
+            var curr = n;
+
+            while (cont < n) {
+                res *= curr;
+                curr--;
+                cont++;
+            }
+
+            return res;
+        }
+
+        // un pèl diferent:
+        function factorial(n) {
+            var cont = 1;
+            var res = 1;
+            var curr = n;
+
+            while (cont <= n) {
+                res *= curr;
+                curr--;
+                cont++;
+            }
+
+            return res;
+        }
+        
+        
+        console.log("----------------------------------------------------------------------------");
+        
+    </script>
+    
+</body>
+</html>

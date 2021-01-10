@@ -1,0 +1,1 @@
+console.log("Javascript carregat des d'un document .js en un <script> dins el <body>");

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6_Arrays-i-Objectes</title>
+</head>
+<body>
+    
+    <script>
+
+        // ARRAYS
+
+        var elMeuPrimerArray = ["Òscar", "Ester", "Ricardo", "Sergi"];
+
+        alumne1 = elMeuPrimerArray[2];
+
+        console.log(alumne1);
+
+        // -----------------------------------------------------------------------
+
+        // OBJECTES
+
+        var elMeuPrimerObjecte = {  alumnesAmbCamera: 1,
+                                    alumnesSenseCamera: 3,
+                                    numAlumnes: 0,
+                                    calcNumAlumnes: () => {
+                                        this.numAlumnes = this.alumnesAmbCamera + this.alumnesSenseCamera;
+                                    }
+                                }
+        elMeuPrimerObjecte.calcNumAlumnes();            // Executa el mètode que suma els alumnes
+
+        console.log(elMeuPrimerObjecte.numAlumnes);     // Mostra el valor de la propietat
+
+        // -----------------------------------------------------------------------
+
+    </script>
+</body>
+</html>

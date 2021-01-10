@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>_Proves-js_1</title>
+</head>
+<body>
+    <h2>Arxiu de proves de JavaScript ES6</h2>
+    <p>Prem F12 i fes clic a la pestanya <i>Console</i> per accedir a les respostes de la consola.</p>
+
+
+    <script>
+        hello = "Hello";
+        world = "world!!!";
+        console.log(hello, world);
+    </script>
+    <script>
+        a = 3;
+        b = 4;
+    
+        c = a;
+        a = b;
+        b = c;
+    
+        console.log(a);
+        console.log(b);
+    
+        // ex invertir ordre dels nums
+    
+        gotF = "fanta";
+        gotC = "calola";
+        
+        gotBuit = gotF;
+        gotF = "calola";
+        gotC = "gotBuit"
+        console.log("----------------------------------------");
+    </script>
+
+
+    <script>
+        tempC = 20; // temperatura en ºC
+
+        tempF = tempC * 9 / 5 + 32;
+
+        console.log("La temperatura és de " + tempF + " ºF");
+    </script>
+
+
+    <script>
+        temp = 20; //                  temp és una variable Int
+
+        temp = temp * 9/5 + 32; //    temp és una variable Float
+
+        temp = temp + " ºF"; //       temp és una variable String (és converteix en string)
+
+        console.log("La temperatura és de " + temp);
+        console.log('La temperatura és de ' + temp);
+        console.log(`La temperatura és de ${temp}`); //    El símbol ${} fa que s'agafi el valor de la variable quan està dins de `` (accents) (no funciona amb cometes tipus "" ni ''). Pot servir per introduir diverses variables dins una línia i estalviar-se les cometes i els símbols + cada vegada que vingui una variable.
+        console.log("----------------------------------------");
+
+
+        nom = "Eva";
+        dia = "\"juernes\""; //   s'utilitzen les contrabarres "\" per escapar (mostrar tal qual) el caràcter interpretable següent.
+        mascota = "el teu company de pis";
+
+        console.log(`Hola, ${nom}. Com estàs en aquest meravellós ${dia}? Què tal està ${mascota}`);
+
+        document.write("<h3>Això excriu al cos del HTML.</h3>");
+        // OUTPUTS: console.log(), innerHTML, document.write(), window.alert() i window.print()
+
+        // window.alert("Hola!");
+
+        // window.print() no serveix per mostrar informació, només obre el menú per imprimir la pàgina
+        console.log("----------------------------------------");
+
+
+        dies = 3;
+        // el teu codi aquí:
+        segons = dies * 24 * 60 * 60;
+        console.log("Hi ha " + segons + " segons en " + dies + " dies");
+        
+        euros = 7;
+        // el teu codi aquí:
+        dolares = euros * 1.21;
+        dolares = dolares.toFixed(2) //     Aquest afegit serveix per arrodonir a n decimals el resultat de l'operació
+        console.log(euros + " euros són " + dolares + " dòlars");
+        
+        precio = 100;
+        // el teu codi aquí:
+        con_iva = precio * 1.21;
+        console.log("El que costa " + precio + " euros sense IVA, costa " + con_iva + " amb IVA (del 21%)");
+        console.log("----------------------------------------");
+
+
+        const alto = 4;
+        const ancho = 8;
+        // tu código aquí:
+        per = ancho*2 + alto*2;
+        area = ancho*alto;
+        console.log("un rectángulo de alto " + alto + " y ancho " + ancho + " tiene un perímetro de " + per + " y un área de " + area);
+        
+        const grados_f = 451
+        // tu código aquí:
+        grados_c = (grados_f-32) * 5/9;
+        console.log(grados_f + " grados Fahrenheit son " + grados_c.toFixed(1) + " grados Celsius") // toFixed() fija los decimales
+        console.log("----------------------------------------");
+
+
+        // L'Ester ha demanat una safata de sushi de tamany gegant. Salmó a tope!
+        nom_client = "Ester";
+        contingut = "sushi";
+        mida = "gegant";
+        comentari = "Salmó a tope!";
+        console.log(`L'${nom_client} ha demanat una safata de ${contingut} de tamany ${mida}. ${comentari}`);
+        console.log("----------------------------------------");
+
+
+        const radi = 3;
+        const PI = 3.14159265;
+        area = PI * radi**2
+        console.log("L'àrea d'un cercle de radi " + radi + " és " + area);
+
+        const chuches = 17;
+        const alumnos = 5;
+        console.log("Si somos " + alumnos + " alumons y repartimos " + chuches + " chuches, el Omar se come " + chuches%alumnos + " chuches"/* pon aquí una expresión para las cuches que sobran */);
+        // l'operador % (mòdul) retorna la resta de la divisió
+        console.log("----------------------------------------");
+
+
+        console.log(`Aquesta frase \nestà en \ntres línies`); // el \n insereix un salt de línia
+        console.log(`   Aquesta frase
+        està en
+        tres línies`); // dins dels accents `` s'interpreten els salts de línia i les tabulacions, com en un <pre> de HTML
+
+        // bucle for, bucle while, conditional if, conditional switch
+        // funcions "antigues", funcions "arrow"
+
+        console.log("----------------------------------------");
+
+    </script>
+    
+    <script src="./_Proves-js_1.js"></script>
+</body>
+</html>
