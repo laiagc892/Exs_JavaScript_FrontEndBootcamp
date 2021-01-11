@@ -634,15 +634,16 @@ console.log("%c---------- Exercici 20 ----------", "color: green");
 // TODO defineix la funció horoscop()
 
 //! PROVISIONAL const horoscop = () => {
+//! PROVISIONAL     let data, dia, mes, signe, descr;
 //! PROVISIONAL     data = prompt("Quan vas néixer? DD/MM");
-//! PROVISIONAL     let dia = data.slice(0, 2);
-//! PROVISIONAL     let mes = data.slice(3);
-//! PROVISIONAL     let signe = "";
-//! PROVISIONAL     let descr = "";
+//! PROVISIONAL     dia = data.slice(0, 2);
+//! PROVISIONAL     mes = data.slice(3);
+//! PROVISIONAL     signe = "";
+//! PROVISIONAL     descr = "";
 //! PROVISIONAL 
 //! PROVISIONAL     // debugger
 //! PROVISIONAL     if (
-//! PROVISIONAL         (data.length != 5 && data[2] != "/") ||
+//! PROVISIONAL         (data.length != 5 || data[2] != "/") ||
 //! PROVISIONAL         !(
 //! PROVISIONAL         ((1 <= dia && dia <= 31) && (mes==1||mes==3||mes==5||mes==7||mes==8||mes==10||mes==12) ) ||
 //! PROVISIONAL         ((1 <= dia && dia <= 30) && (mes==4||mes==6||mes==9||mes==11) ) ||
@@ -699,6 +700,7 @@ console.log("%c---------- Exercici 20 ----------", "color: green");
 //! PROVISIONAL horoscop();
 
 
+
 //* -------------------- BUCLE FOR --------------------
 console.log('%c-------------------- BUCLE FOR --------------------', 'color: orangered');
 
@@ -719,10 +721,14 @@ console.log("%c---------- Exercici 22 ----------", "color: green");
 // és múltiple de 3 i "què tal? si és múltiple de 5"
 
 // TODO el codi aquí
-for (let i = 0; i < array.length; i++) {
-    const element = array[i];
-    
+for (let i = 1; i < 21; i++) {
+    let str = `${i}`;
+    if (i % 2 == 0) str += " hola";
+    if (i % 3 == 0) str += " adéu";
+    if (i % 5 == 0) str += " què tal?";
+    console.log(str);
 }
+
 
 console.log("%c---------- Exercici 23 ----------", "color: green");
 // exercici 23: fes un contador que mostri a la consola els números de l'1 al número que introdueixis com a paràmentre
@@ -732,6 +738,17 @@ console.log("%c---------- Exercici 23 ----------", "color: green");
 var max = prompt("Fins quin número vols contar (1-1000)?");
 
 // TODO defineix aquí la funció contar()
+
+const contar = (numMax) => {
+    for (let i = 1; i < 1001; i++) {
+        if (i <= numMax && numMax != null && !isNaN(numMax)) {
+            console.log(i);
+            continue;
+        } else if (i > numMax) {
+            break;
+        } else console.log("%cIntrodueix un número vàlid... o torna a P3", "color: red");
+    }
+}
 
 contar(max); // això ha de mostrar a la consola els números de l'1 al número introduit
 
@@ -743,6 +760,14 @@ console.log("%c---------- Exercici 24 ----------", "color: green");
 //// PISTA: un número primer només és divisible per 1 i per si mateix
 
 // TODO el codi aquí
+
+for (let i = 0; i < 101; i++) {
+    // let numP;
+    for
+}
+
+console.log(`Els nombres primers que hi ha entre 1 i 100 son: ${numP}`);
+
 //* Pista Yifei
 // for(dividendo=1;dividendo<101;dividendo++){}
 // for(divisor=1;divisor<=dividendo;divisor++){
