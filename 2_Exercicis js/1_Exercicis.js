@@ -735,7 +735,7 @@ console.log("%c---------- Exercici 23 ----------", "color: green");
 // (fins a 1000 com a màxim)
 //// PISTA: usa la paraula clau "break"
 
-var max = prompt("Fins quin número vols contar (1-1000)?");
+//! PROVISIONAL var max = prompt("Fins quin número vols contar (1-1000)?");
 
 // TODO defineix aquí la funció contar()
 
@@ -750,7 +750,7 @@ const contar = (numMax) => {
     }
 }
 
-contar(max); // això ha de mostrar a la consola els números de l'1 al número introduit
+//! PROVISIONAL contar(max); // això ha de mostrar a la consola els números de l'1 al número introduit
 
 
 console.log("%c---------- Exercici 24 ----------", "color: green");
@@ -761,9 +761,18 @@ console.log("%c---------- Exercici 24 ----------", "color: green");
 
 // TODO el codi aquí
 
-for (let i = 0; i < 101; i++) {
-    // let numP;
-    for
+var numP = "";
+
+for (let dividend = 1; dividend < 101; dividend++) {
+    for (let divisor = 2; divisor <= dividend; divisor++) {
+        if (dividend % divisor == 0 && !(divisor >= dividend)) {
+            // console.log(dividend);
+            break;
+        } else if (dividend == divisor) {
+            // console.log(dividend);
+            numP += dividend + ", ";
+        }
+    }
 }
 
 console.log(`Els nombres primers que hi ha entre 1 i 100 son: ${numP}`);
@@ -777,11 +786,11 @@ console.log("%c---------- Exercici 25 ----------", "color: green");
 // exercici 25: fes un contador que només mostri els números que tinguin un dígit contingut a la string predefinida fins a 100
 //// PISTA: usa la paraula clau "continue"
 
-var digits = prompt("Quins digits vols mostrar (1-9)?");
+//! PROVISIONAL var digits = prompt("Quins digits vols mostrar (1-9)?");
 
 // TODO defineix la funció mostrarDigits()
 
-mostrarDigits(digits);      // si digits és "2 3 4", això mostrarà "2, 3, 4, 12, 13, 14, 20, 21, 22, 23..."
+//! PROVISIONAL mostrarDigits(digits);      // si digits és "2 3 4", això mostrarà "2, 3, 4, 12, 13, 14, 20, 21, 22, 23..."
 
 
 
