@@ -183,7 +183,7 @@ var costats = 5;
 
 function poligon(longCostat, numCostats) {
     if (numCostats < 3) return console.log("Ruc!");
-
+    
     let apotema = longCostat / (2 * Math.tan(Math.PI / numCostats));    // Utilitzem les fórmules per fer els càlculs corresponents. 
     P = longCostat * numCostats;
     A = P * apotema / 2;
@@ -211,7 +211,7 @@ log de la cadena resultant
 
 //! PROVISIONAL function botiga() {
 //! PROVISIONAL     let item = prompt('Quin ítem vols? (Samarreta, pantaló o barret)').toLowerCase();
-    
+
 //! PROVISIONAL     if (item == 'barret') {
 //! PROVISIONAL         let tipusBarret = prompt('De quin tipus el vols? (Copa, pirata, gorra o llana)').toLowerCase();
 //! PROVISIONAL         if (!(tipusBarret == 'copa' || tipusBarret == 'pirata' || tipusBarret == 'gorra' || tipusBarret == 'llana')) {
@@ -228,14 +228,14 @@ log de la cadena resultant
 //! PROVISIONAL         console.log('%cNo has definit un ítem vàlid', 'color: red');
 //! PROVISIONAL         return
 //! PROVISIONAL     }
-    
+
 //! PROVISIONAL     let talla = prompt('Quina talla vols? (S, M, L, XL)').toUpperCase();
-    
+
 //! PROVISIONAL     if (!(talla == 'S' || talla == 'M' || talla == 'L' || talla == 'XL')) {
 //! PROVISIONAL         console.log('%cNo has definit una talla vàlida', 'color: red');
 //! PROVISIONAL         return
 //! PROVISIONAL     }
-    
+
 //! PROVISIONAL     return `Has demanat %c${item}%c de la talla %c${talla}`;
 //! PROVISIONAL }
 
@@ -437,7 +437,7 @@ const convertirEnDecimal = (str) => {
     let numEnDecimal = "";
     let symDecimal = [".", ",", "'"];
     let jaTeUnaComa = false;
-
+    
     for (let i = 0; i < str.length; i++) {
         if ( !isNaN(str[i]) ) {
             numEnDecimal += str[i];
@@ -606,7 +606,7 @@ function paraulaRandom(frase) {
     let fraseEspais = separarParaules(frase);
     let paraules = [];
     let unaParaula = "";
-
+    
     for (caracter of fraseEspais) {
         if (caracter.toUpperCase() != caracter.toLowerCase()) {    // Si és una lletra...:
             unaParaula += caracter;
@@ -627,9 +627,9 @@ console.log("%c---------- Exercici 20 ----------", "color: green");
 // predicció del que et passarà durant el dia
 
 /*  HELP:
-    Taula dates horòscop: https://es.wikipedia.org/wiki/Zodiaco#Tabla_de_fechas
-    Icones horòscops en text i emojis: https://en.wikipedia.org/wiki/Astrological_symbols#Signs_of_the_zodiac
-    Mini descripcions horòscops: https://www.boredpanda.com/hilarious-horoscope-1979/?utm_source=google&utm_medium=organic&utm_campaign=organic
+Taula dates horòscop: https://es.wikipedia.org/wiki/Zodiaco#Tabla_de_fechas
+Icones horòscops en text i emojis: https://en.wikipedia.org/wiki/Astrological_symbols#Signs_of_the_zodiac
+Mini descripcions horòscops: https://www.boredpanda.com/hilarious-horoscope-1979/?utm_source=google&utm_medium=organic&utm_campaign=organic
 */
 // TODO defineix la funció horoscop()
 
@@ -790,6 +790,27 @@ console.log("%c---------- Exercici 25 ----------", "color: green");
 
 // TODO defineix la funció mostrarDigits()
 
+// Serveixen tan per string com per array: el mètode .includes(), el .length i el caràcter segons índex str[] arr[].
+
+//* SUBCODI:
+/*  determinar/extreure quins dígits estan continguts a la string
+determinar/escollir quins nums de l'1 al 100 contenen aquests dígits.
+*/
+
+const mostrarDigits = () => {
+    let nums = "";
+    digits = String(digits);
+    for (let i = 1; i < 101; i++) {
+        i += "";
+        for (const unNum of i) {
+            if (digits.includes(unNum)) {
+                nums += i + ", ";
+            }
+        }
+    }
+    console.log(nums.slice(0,-2));
+}
+
 //! PROVISIONAL mostrarDigits(digits);      // si digits és "2 3 4", això mostrarà "2, 3, 4, 12, 13, 14, 20, 21, 22, 23..."
 
 
@@ -797,7 +818,241 @@ console.log("%c---------- Exercici 25 ----------", "color: green");
 //* -------------------- BUCLE WHILE --------------------
 console.log('%c-------------------- BUCLE WHILE --------------------', 'color: orangered');
 
+console.log("%c---------- Exercici 26 ----------", "color: green");
+// exercici 26: llista de la compra. Fes que un prompt es repeteixi fins que l'usuari introdueixi una paraula clau; fins
+// llavors, cada paraula introduida serà un item de la llista de la compra, que s'escriurà després de que l'usuari l'aturi
+// amb el format:       Llista de la compra:
+//                       - Pa
+//                       - Mantega
+//                       - Aigua
+//// PISTA: l'ultim console.log() mostrarà un string amb salts de línia "\n"
+
+// TODO aquí el codi
+
+var llistaCompra = "Llista de la compra:\n";
+
+//! PROVISIONAL do {
+//! PROVISIONAL     item = prompt(`Escriu el que has de comprar, paraula per paraula. Quan hagis acabat, escriu "feta!"`);
+//! PROVISIONAL     if (item != "feta!") llistaCompra += `- ${item}\n`;
+//! PROVISIONAL } while (item != "feta!");
+
+console.log(llistaCompra);
+
 
 
 //* -------------------- MÈTODES ARRAYS --------------------
 console.log('%c-------------------- MÈTODES ARRAYS --------------------', 'color: orangered');
+
+console.log("%c---------- Exercici 27 ----------", "color: green");
+// exercici 27: dia de la setmana. A partir d'un array amb els dies de la setmana, pinta a la consola quin dia és avui
+
+var dies = ["dilluns", "dimarts", "dimecres", "dijous", "divendres", "dissabte", "diumenge"]
+
+// TODO aquí el codi
+
+var data = new Date;
+var dia = data.getDay()
+// console.log(dia);
+// dia = 0;
+
+if (dia != 0) {
+    console.log(dies[dia-1]);
+} else console.log(dies[6]);
+
+
+console.log("%c---------- Exercici 28 ----------", "color: green");
+// exercici 28: replicar split(). Defineix una funció que separi una cadena de caràcters amb el separador escollit
+
+var cadena = "blaucacavermellcacagroccacamarrócacaverd"
+
+// TODO defineix aquí la funció separar()
+
+const separar = (str, separador) => {
+    let indexSep = str.indexOf(separador);
+    let arrSeparat = [];
+    while (indexSep != -1) {
+        console.log(indexSep);
+        // If perquè només guardi el tros d'abans del separador si existeix:
+        if (indexSep != 0) arrSeparat.push(str.slice(0, indexSep));
+        str = str.slice(indexSep+separador.length);
+        console.log(str);
+        // Hem de redefinir el valor de indexSep per al següent separador:
+        indexSep = str.indexOf(separador);
+    }
+    if (str) arrSeparat.push(str);
+    return arrSeparat;
+}
+
+console.log(separar(cadena, "caca"));   // ha de mostrar ["blau", "vermell", "groc", "marró", "verd"]
+
+var cadena = "blau,,,vermell,groc,,,marró,verd"
+console.log(separar(cadena, ","));
+
+
+console.log("%c---------- Exercici 29 ----------", "color: green");
+// exercici 29: defineix una funció que agafi els elements d'un array i els mogui N elements cap a la dreta
+
+var array = ["primer", "segon", "tercer", "quart", "cinquè"]
+
+// TODO defineix aquí la funció moure()
+
+//* OPCIÓ 1, amb for:
+// const moure = (arr, N) => {
+//     for (let i = 0; i < N; i++) {
+//         let elMogut= "";
+//         elMogut = arr.pop();
+//         console.log(elMogut);
+//         arr.unshift(elMogut);
+//     }
+//     console.log(arr);
+//     return arr;
+// }
+
+//* OPCIÓ 2, amb splice i concat:
+// const moure = (arr, N) => {
+//     let moguts = [];
+//     moguts = arr.splice((arr.length-N), N);
+//     console.log(moguts);
+//     return (arr.splice((arr.length-N), N)).concat(arr);
+// }
+
+//* OPCIÓ 3, amb splice i concat reduït:
+const moure = (arr, N) => (arr.splice((arr.length-N), N)).concat(arr);
+
+console.log(moure(array, 2));       // ha de mostrar ["quart", "cinquè", "primer", "segon", "tercer"]
+
+
+console.log("%c---------- Exercici 30 ----------", "color: green");
+// exercici 30: adapta l'exercici de la llista de la compra (ex. 26) perquè posi els elements en un array i
+// els ordeni alfabèticament
+
+// TODO aquí el codi
+
+var arrLlista = [];
+var llistaCompra = "Llista de la compra:\n- ";
+
+// do {
+//     item = prompt(`Escriu el que has de comprar, paraula per paraula. Quan hagis acabat, escriu "feta!"`);
+//     if (item != "feta!") arrLlista.push(item);
+// } while (item != "feta!");
+
+arrLlista.sort();
+llistaCompra += arrLlista.join("\n- ");
+console.log(llistaCompra);
+
+
+console.log("%c---------- Exercici 31 ----------", "color: green");
+// exercici 31: paradoxa de l'aniversari. Genera N dates d'aniversari aleatòries (1-365) en un array i comprova
+// si hi ha alguna repetida. Fes això per N = 5, 10, 15, 20, 25, 30, 35, 40, 45, 50 i mostra a la consola per quins
+// hi ha hagut coincidències d'aniversari
+
+// TODO aquí el codi
+
+// Generador d'array números aleatoris entre 1 i 365
+// Generador d'array de N números aleatoris -> array(5) -> [45,4,7,323,53]
+// Comprovador d'elements repetits -> [45,2,74,84,74] -> true
+// Bucle que et generi els arrays -> array(5), array(10), array(15)...
+
+// Console.log:
+// 5 personas
+// 10 personas
+// 15...
+
+const arrDatesN = N => {
+    var arrDates = [];
+    for (let i = 0; i < N; i++) {
+        arrDates.push(Math.ceil(Math.random()*365));
+    }
+    return arrDates
+}
+// console.log(arrDatesN(5));
+
+//* OPCIÓ 1 del bucle d'arrays segons N:
+// for (let i = 5; i <= 50; i+=5) {
+//     console.log(arrDatesN(i));
+// }
+//* OPCIÓ 2 del bucle d'arrays segons N:
+var N = ["5", "10", "15", "20", "25", "30", "35", "40", "45", "50"];
+for (n of N) {
+    console.log(`L'array de dates random de N = ${n} és:`);
+    console.log(arrDatesN(n));
+}
+
+
+
+
+//* -------------------- OBJECTES --------------------
+console.log('%c-------------------- OBJECTES --------------------', 'color: orangered');
+
+console.log("%c---------- Exercici 32 ----------", "color: green");
+// exercici 32: crea un objecte que tingui les propietats "nom", "any" i "edat" i un mètode calcularEdat()
+// que calculi l'edat en funció de l'any de neixement i la guardi a la propietat "edat"
+//// PISTA: useu Date()
+
+var persona = { // TODO aquí les propietats de l'objecte
+}
+
+persona.calcularEdat();
+
+// TODO console.log() que digui "La Maria va nèixer el 1995 i té 25 anys" agafant les propietats de l'objecte
+
+
+console.log("%c---------- Exercici 33 ----------", "color: green");
+// exercici 33: crea un objecte que contingui una paraula i el mètode separar() (de l'exercici 27) de tal manera
+// que poguem usar-lo amb el codi següent
+
+var frase = { string : "blaucacavermellcacagroccacamarrócacaverd",
+// TODO aquí el mètode de l'objecte  
+}
+
+var fraseSeparada = frase.separar("caca");
+
+console.log(fraseSeparada);     // ha de mostrar ["blau", "vermell", "groc", "marró", "verd"]
+
+
+console.log("%c---------- Exercici 34 ----------", "color: green");
+// exercici 34: adapta l'exercici de la llista de la compra (ex. 26 i 29) perquè fiqui els elements en un objecte
+// separats per seccions (carnisseria, fruita i verdura, làctics, forn de pa) i ordenats alfabèticament. El console.log
+// haurà de mostrar els productes classificats per seccions:           Llista de la compra:
+//                                                                        - Carnisseria
+//                                                                             + Hamburguesa
+//                                                                             + Bistec
+//                                                                             + Mandonguilles
+//                                                                        - Fruita i verdura
+//                                                                             + Plàtans
+//                                                                             + Síndria
+//// PISTA: el prompt demanarà dues paraules: el producte i una lletra per classificar-los (p.e. "magdalenes F")
+
+// TODO: aqui el codi
+
+
+console.log("%c---------- Exercici 35 ----------", "color: green");
+// exercici 35: gestionar un CSV. El programa ha d'agafar un string en format CSV i ficar tota la informació dins un array
+// d'objectes amb els noms de les columnes com a propietats
+//// PISTA: necessitareu ajuda. Demaneu-la
+//// PISTA 2: encara que no hi hagi \n per marcar els salts de línia, els detexta igual perquè uso cometes ``
+
+var csv = `Year,Make,Model,Description,Price
+1997,Ford,E350,ac abs moon,3000.00
+1999,Chevy,Venture "Extended Edition",,4900.00
+1999,Chevy,Venture "Extended Edition XL",,5000.00
+1996,Jeep,Grand Cherokee,MUST SELL! air moon-roof loaded,4799.00`
+
+// TODO gestionar el csv perquè acabi sent una cosa com la de sota
+
+// var cotxes = [ { Year = 1997,
+//                  Make = "Ford",
+//                  Model = "E350",
+//                  Description = "ac, abs, moon",
+//                  Price = 3000.00
+//                 },    
+//                { Year = 1997,
+//                  Make = "Ford",
+//                  Model = "E350",
+//                  Description = "",
+//                  Price = 3000.00
+//                 } ];
+
+
+
+console.log("-------------------- FI DELS EXERCICIS --------------------");
