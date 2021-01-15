@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proves jv+html</title>
+</head>
+<body>
+    <!-- document.querySelector("") -->
+    <!-- nomBotó.addEventListener("click", funció que volem que fagi) -->
+    
+    <input type="text" id="input_nom" placeholder="Escriu aquí el teu nom...">
+    <button id="button_nom">Enviar nom</button>
+
+    <script>
+        var quadreDeText = document.querySelector("#input_nom");
+        var b_nom = document.querySelector("#button_nom");
+        
+        b_nom.addEventListener("click", () => {
+            console.log(quadreDeText.value);
+        });
+    </script>
+</body>
+</html>
