@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1_Exercici</title>
+    <link rel="stylesheet" href="0_Exercicis.css">
+</head>
+<body>
+    <div class="form">
+        <button id="saludar">Em pots saludar? M'agradaria molt!</button>
+    </div>
+    <script>
+        // Seleccionar un element del DOM (Document Object Model):
+        var b1 = document.querySelector("#saludar")
+        
+        // Afegir un detector d'esdeveniments a un element
+        b1.addEventListener("click", () => console.log("Hola, Usuari!"));     // detecta el click al botó i executa la funció
+    </script>
+</body>
+</html>

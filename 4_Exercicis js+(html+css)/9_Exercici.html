@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9_Exercici</title>
+    <link rel="stylesheet" href="0_Exercicis.css">
+</head>
+<body>
+    <div class="form">
+        <h3>Temperatura origen:</h3>
+        <div class="enL">
+            <input type="text" name="" id="tempO" placeholder="Escriu els graus Celsius...">
+            <!-- <label for="temp">Unitats de graus</label> -->
+            <select name="temp" id="uO">
+                <option value="C">ºC (Celsius)</option>
+                <option value="F">ºF (Fahrenheit)</option>
+                <option value="K">K (Kelvin)</option>
+            </select>
+        </div>
+        <button id="convGr">Temperatura origen --> Temperatura convertida</button>
+        <h3>Temperatura convertida:</h3>
+        <div class="enL">
+            <p id="tempC"></p>
+            <!-- <label for="temp">Unitats de graus</label> -->
+            <select name="temp" id="uC">
+                <option value="C">ºC (Celsius)</option>
+                <option value="F">ºF (Fahrenheit)</option>
+                <option value="K">K (Kelvin)</option>
+            </select>
+        </div>
+    </div>
+    <script>
+        var b1 = document.querySelector("#convGr");
+        var temp1_i = document.querySelector("#tempO");
+        var temp2_p = document.querySelector("#tempC");
+        
+        b1.addEventListener("click", () => {
+            let u1 = document.querySelector("#uO option:checked").value;
+            let u2 = document.querySelector("#uC option:checked").value;
+            let t1 = parseFloat(temp1_i.value);
+            // console.log(t1);
+            if (!isNaN(t1) && t1 != null) {
+                let t2;
+                switch (u1) {
+                    case "C":
+                    switch (u2) {
+                        case "C": t2 = t1; break;
+                        case "F": t2 = t1 * 9/5 + 32; break;
+                        case "K": t2 = t1 + 273.15; break;
+                    } break;
+                    case "F":
+                    switch (u2) {
+                        case "C": t2 = (t1 - 32) * 5/9; break;
+                        case "F": t2 = t1; break;
+                        case "K": t2 = (t1 + 459.67) * 5/9; break;
+                    } break;
+                    case "K":
+                    switch (u2) {
+                        case "C": t2 = t1 - 273.15; break;
+                        case "F": t2 = t1 * 9/5 - 459.67; break;
+                        case "K": t2 = t1; break;
+                    } break;
+                }
+                // console.log(t2);
+                temp2_p.innerHTML = t2;
+            } else (temp2_p.innerHTML = `Introdueix una temperatura vàlida...`);
+        });
+    </script>
+</body>
+</html>

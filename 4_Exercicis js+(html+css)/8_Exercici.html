@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8_Exercici</title>
+    <link rel="stylesheet" href="0_Exercicis.css">
+</head>
+<body>
+    <div class="form">
+        <h3>Temperatura ºC:</h3>
+        <input type="text" name="" id="grausC" placeholder="Escriu els graus Celsius...">
+        <button id="convGr">Celsius --> Fahrenheit</button>
+        <h3>Temperatura ºF:</h3>
+        <p id="par"></p>
+    </div>
+    <script>
+        // Seleccionar un element del DOM (Document Object Model):
+        var b1 = document.querySelector("#convGr");
+        var cel = document.querySelector("#grausC");
+        var p = document.querySelector("#par");
+        
+        // Afegir un detector d'esdeveniments a un element
+        b1.addEventListener("click", () => {
+            if (!isNaN(cel.value) && cel.value != null) {
+                let fahr = cel.value * 9/5 + 32;
+                p.innerHTML += `${fahr} ºF`;
+            } else (p.innerHTML += `Introdueix una temperatura vàlida...`);
+            // Hauríem de posar overflow-wrap: break-word al css si anem afegint caràcters a la string sense incloure espais en algun lloc (ho detecta com una paraula molt llarga).
+            // O per indicar on pot trencar la paraula: <p>Palabrasuperlarga<wbr/>enlaquevoyadecidirpordondequieroquesecorte<wbr/>encasodenocaberenlacapaquelacontiene</p>
+        });
+    </script>
+</body>
+</html>

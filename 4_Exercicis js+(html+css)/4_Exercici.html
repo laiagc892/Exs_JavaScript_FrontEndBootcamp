@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4_Exercici</title>
+    <link rel="stylesheet" href="0_Exercicis.css">
+</head>
+<body>
+    <div class="form">
+        <div>
+        <p>Selecciona el teu pronom:</p>
+            <input type="radio" name="pronom" id="ella" value="l'esplèndida">
+            <label for="ella">l'esplèndida</label>
+            <input type="radio" name="pronom"  id="ell" value="l'esplèndit">
+            <label for="ell">l'esplèndit</label>
+            <input type="radio" name="pronom" id="allo" value="l'impressionant">
+            <label for="allo">l'impressionant</label>
+        </div>
+        <input type="text" name="" id="nom" placeholder="Escriu el teu nom... perquè et pugui saludar">
+        <button id="saludar-me">Em pots saludar? M'agradaria molt!</button>
+        <p id="par"></p>
+    </div>
+    <script>
+        // Seleccionar un element del DOM (Document Object Model):
+        var b1 = document.querySelector("#saludar-me");
+        var nom = document.querySelector("#nom");
+        var p = document.querySelector("#par");
+
+        // Afegir un detector d'esdeveniments a un element
+        b1.addEventListener("click", () => {
+            // Declarem la variable prnom dins la funció, ja que si ho fessim abans del "click", no agafaria el pronom que ha escollit l'usuari.
+            var prnom = document.querySelector("input[name=pronom]:checked");       // Podem no posar input si amb el name ja troba l'element q volem.
+            // input és l'element (etiqueta) i [name=nameOfRadio] és el seu atribut. Podem referir-nos a qualsevol dels atributs. Classes i id es redueixen a "." i "#" + el nom corresponent.
+            p.innerHTML = `Una càlida salutació per ${prnom.value} ${nom.value}! `
+        });     // detecta el click al botó i executa la funció
+    </script>
+</body>
+</html>

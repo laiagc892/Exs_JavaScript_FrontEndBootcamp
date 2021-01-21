@@ -763,9 +763,10 @@ console.log("%c---------- Exercici 24 ----------", "color: green");
 
 var numP = "";
 
-for (let dividend = 1; dividend < 101; dividend++) {
+//* OPCIÓ 2, el que he fet originalment:
+for (let dividend = 2; dividend < 101; dividend++) {
     for (let divisor = 2; divisor <= dividend; divisor++) {
-        if (dividend % divisor == 0 && !(divisor >= dividend)) {
+        if (dividend % divisor == 0 && divisor != dividend) {
             // console.log(dividend);
             break;
         } else if (dividend == divisor) {
@@ -775,11 +776,36 @@ for (let dividend = 1; dividend < 101; dividend++) {
     }
 }
 
-console.log(`Els nombres primers que hi ha entre 1 i 100 son: ${numP}`);
+//* OPCIÓ 2, com el meu una mica retocat:
+// for (let dividend = 2; dividend < 101; dividend++) {
+//     for (let divisor = 2; divisor <= dividend; divisor++) {
+//         if (dividend == divisor) {
+//             // console.log(dividend);
+//             numP += dividend + ", ";
+//         } else if (dividend % divisor == 0) {
+//             // console.log(dividend);
+//             break;
+//         }
+//     }
+// }
 
-//* Pista Yifei
-// for(dividendo=1;dividendo<101;dividendo++){}
-// for(divisor=1;divisor<=dividendo;divisor++){
+//* OPCIÓ 3, amb boleanes (Omar):
+// for (let dividend = 2; dividend < 101; dividend++) {
+//     let primer = true;
+//     for (let divisor = 2; divisor < dividend; divisor++) {
+//         if (dividend % divisor == 0) {
+//             // console.log(dividend);
+//             primer = false;
+//             break;
+//         }
+//     }
+//     if (primer) {
+//         // console.log(dividend);
+//         numP += dividend + ", ";
+//     }
+// }
+
+console.log(`Els nombres primers que hi ha entre 1 i 100 son: ${numP.slice(0,-2)}`);
 
 
 console.log("%c---------- Exercici 25 ----------", "color: green");
@@ -802,7 +828,7 @@ const mostrarDigits = () => {
     digits = String(digits);
     for (let i = 1; i < 101; i++) {
         i += "";
-        for (const unNum of i) {
+        for (unNum of i) {
             if (digits.includes(unNum)) {
                 nums += i + ", ";
             }
@@ -850,32 +876,39 @@ var dies = ["dilluns", "dimarts", "dimecres", "dijous", "divendres", "dissabte",
 
 // TODO aquí el codi
 
+//* OPCIÓ 1, pasito a pasito i amb condicional, el que he fet jo:
 var data = new Date;
 var dia = data.getDay()
-// console.log(dia);
-// dia = 0;
-
 if (dia != 0) {
     console.log(dies[dia-1]);
 } else console.log(dies[6]);
+
+//* OPCIÓ 2, reduït i amb ternari, Omar:
+console.log(`Avui és ${dies[new Date().getDay() == 0? 6 : new Date().getDay()-1]}`);
+
+//* OPCIÓ 3, mix:
+var data = new Date;
+var dia = data.getDay()
+console.log(`Avui és ${dies[dia == 0? 6 : dia-1]}`);
 
 
 console.log("%c---------- Exercici 28 ----------", "color: green");
 // exercici 28: replicar split(). Defineix una funció que separi una cadena de caràcters amb el separador escollit
 
-var cadena = "blaucacavermellcacagroccacamarrócacaverd"
+var cadena = "cacablaucacavermellcacagroccacamarrócacaverdcaca"
 
 // TODO defineix aquí la funció separar()
 
+//* OPCIÓ 1, si eliminem les cadenes buides resultants:
 const separar = (str, separador) => {
     let indexSep = str.indexOf(separador);
     let arrSeparat = [];
     while (indexSep != -1) {
-        console.log(indexSep);
+        // console.log(indexSep);
         // If perquè només guardi el tros d'abans del separador si existeix:
         if (indexSep != 0) arrSeparat.push(str.slice(0, indexSep));
-        str = str.slice(indexSep+separador.length);
-        console.log(str);
+        str = str.slice(indexSep + separador.length);
+        // console.log(str);
         // Hem de redefinir el valor de indexSep per al següent separador:
         indexSep = str.indexOf(separador);
     }
@@ -883,10 +916,25 @@ const separar = (str, separador) => {
     return arrSeparat;
 }
 
+//* OPCIÓ 2, si repliquem exactament el split afegint cadenes encara que estiguin buides:
+// const separar = (str, separador) => {
+//     let indexSep = str.indexOf(separador);
+//     let arrSeparat = [];
+//     while (indexSep != -1) {
+//         arrSeparat.push(str.slice(0, indexSep));
+//         str = str.slice(indexSep + separador.length);
+//         indexSep = str.indexOf(separador);
+//     }
+//     arrSeparat.push(str);
+//     return arrSeparat;
+// }
+
 console.log(separar(cadena, "caca"));   // ha de mostrar ["blau", "vermell", "groc", "marró", "verd"]
+// console.log(cadena.split("caca"));
 
 var cadena = "blau,,,vermell,groc,,,marró,verd"
 console.log(separar(cadena, ","));
+// console.log(cadena.split(","));
 
 
 console.log("%c---------- Exercici 29 ----------", "color: green");
@@ -896,30 +944,29 @@ var array = ["primer", "segon", "tercer", "quart", "cinquè"]
 
 // TODO defineix aquí la funció moure()
 
-//* OPCIÓ 1, amb for:
-// const moure = (arr, N) => {
-//     for (let i = 0; i < N; i++) {
-//         let elMogut= "";
-//         elMogut = arr.pop();
-//         console.log(elMogut);
-//         arr.unshift(elMogut);
-//     }
-//     console.log(arr);
-//     return arr;
-// }
+//* OPCIÓ 1, amb for + arr auxiliar per no modificar l'original (conserva l'original intacte):
+const moure = (arr, N) => {
+    let arrAux = [];                // Inicialitzem un arr auxiliar nou per no sobreescriure l'original
+    arrAux = arrAux.concat(arr);    // i li assignem el mateix contingut
+    for (let i = 0; i < N; i++) {
+        arrAux.unshift(arrAux.pop());
+    }
+    return arrAux;
+}
 
-//* OPCIÓ 2, amb splice i concat:
+//* OPCIÓ 2, amb splice i concat (no conserva l'original, queda l'array amb el tall del splice fet):
 // const moure = (arr, N) => {
 //     let moguts = [];
 //     moguts = arr.splice((arr.length-N), N);
 //     console.log(moguts);
-//     return (arr.splice((arr.length-N), N)).concat(arr);
+//     return moguts.concat(arr);
 // }
 
-//* OPCIÓ 3, amb splice i concat reduït:
-const moure = (arr, N) => (arr.splice((arr.length-N), N)).concat(arr);
+//* OPCIÓ 3, amb splice i concat reduït (no conserva l'original, queda l'array amb el tall del splice fet):
+// const moure = (arr, N) => (arr.splice((arr.length-N), N)).concat(arr);
 
 console.log(moure(array, 2));       // ha de mostrar ["quart", "cinquè", "primer", "segon", "tercer"]
+console.log(array);
 
 
 console.log("%c---------- Exercici 30 ----------", "color: green");
@@ -929,15 +976,15 @@ console.log("%c---------- Exercici 30 ----------", "color: green");
 // TODO aquí el codi
 
 var arrLlista = [];
-var llistaCompra = "Llista de la compra:\n- ";
+var llistaCompra = "Llista de la compra:\n";
 
-// do {
-//     item = prompt(`Escriu el que has de comprar, paraula per paraula. Quan hagis acabat, escriu "feta!"`);
-//     if (item != "feta!") arrLlista.push(item);
-// } while (item != "feta!");
+//! PROVISIONAL do {
+//! PROVISIONAL     item = prompt(`Escriu el que has de comprar, paraula per paraula. Quan hagis acabat, escriu "feta!"`);
+//! PROVISIONAL     if (item != "feta!" && item != null && item != "") arrLlista.push("- " + item);
+//! PROVISIONAL } while (item != "feta!");
 
 arrLlista.sort();
-llistaCompra += arrLlista.join("\n- ");
+llistaCompra += arrLlista.join("\n");
 console.log(llistaCompra);
 
 
@@ -958,9 +1005,9 @@ console.log("%c---------- Exercici 31 ----------", "color: green");
 // 10 personas
 // 15...
 
-const arrDatesN = N => {
+const arrDatesN = NDates => {
     var arrDates = [];
-    for (let i = 0; i < N; i++) {
+    for (let i = 0; i < NDates; i++) {
         arrDates.push(Math.ceil(Math.random()*365));
     }
     return arrDates
@@ -969,15 +1016,33 @@ const arrDatesN = N => {
 
 //* OPCIÓ 1 del bucle d'arrays segons N:
 // for (let i = 5; i <= 50; i+=5) {
+//     console.log(`L'array de dates random de N = ${i} és:`);
 //     console.log(arrDatesN(i));
 // }
 //* OPCIÓ 2 del bucle d'arrays segons N:
 var N = ["5", "10", "15", "20", "25", "30", "35", "40", "45", "50"];
 for (n of N) {
     console.log(`L'array de dates random de N = ${n} és:`);
-    console.log(arrDatesN(n));
+    // console.log(arrDatesN(n));
+    let datesN = arrDatesN(n);
+    console.log(datesN);
 }
 
+function comprovarRepes(arr) {
+    let coincidents = "";
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i+1; j < arr.length; j++) {
+            console.log(arr[i]);
+            console.log(arr[j]);
+            if (arr[i] == arr[j]) {
+                coincidents += (arr[i]);
+                console.log(coincidents);
+                return console.log(true + `On hi ha coincidit la/les data/es ${coincidents}.`);
+            }
+        }
+    }
+    return console.log(false + "En el qual no hi coincideix cap data.");
+}
 
 
 
@@ -986,23 +1051,50 @@ console.log('%c-------------------- OBJECTES --------------------', 'color: oran
 
 console.log("%c---------- Exercici 32 ----------", "color: green");
 // exercici 32: crea un objecte que tingui les propietats "nom", "any" i "edat" i un mètode calcularEdat()
-// que calculi l'edat en funció de l'any de neixement i la guardi a la propietat "edat"
+// que calculi l'edat en funció de l'any de naixement i la guardi a la propietat "edat"
 //// PISTA: useu Date()
 
 var persona = { // TODO aquí les propietats de l'objecte
+    nom: "Maria",
+    any: 1995,
+    edat: 0,
+    calcularEdat: function () {
+        this.edat = (new Date().getFullYear() - this.any);
+    },
 }
 
 persona.calcularEdat();
 
 // TODO console.log() que digui "La Maria va nèixer el 1995 i té 25 anys" agafant les propietats de l'objecte
 
+console.log(`La ${persona.nom} va néixer el ${persona.any} i té ${persona.edat} anys.`);
+
 
 console.log("%c---------- Exercici 33 ----------", "color: green");
 // exercici 33: crea un objecte que contingui una paraula i el mètode separar() (de l'exercici 27) de tal manera
 // que poguem usar-lo amb el codi següent
 
-var frase = { string : "blaucacavermellcacagroccacamarrócacaverd",
-// TODO aquí el mètode de l'objecte  
+var frase = { string: "blaucacavermellcacagroccacamarrócacaverd",
+    // TODO aquí el mètode de l'objecte
+    //* Podem copiar el codi de la funció o cridar-la directament:
+
+    // separar: function (separador) {
+    //     let str = this.string;
+
+    //     let indexSep = str.indexOf(separador);
+    //     let arrSeparat = [];
+    //     while (indexSep != -1) {
+    //         arrSeparat.push(str.slice(0, indexSep));
+    //         str = str.slice(indexSep + separador.length);
+    //         indexSep = str.indexOf(separador);
+    //     }
+    //     arrSeparat.push(str);
+    //     return arrSeparat;
+    // },
+
+    separar: function (separador) {
+        return separar(this.string, separador);
+    },
 }
 
 var fraseSeparada = frase.separar("caca");
@@ -1025,6 +1117,18 @@ console.log("%c---------- Exercici 34 ----------", "color: green");
 
 // TODO: aqui el codi
 
+// var arrLlista = [];
+// var llistaCompra = "Llista de la compra:\n";
+
+// //! PROVISIONAL do {
+// //! PROVISIONAL     item = prompt(`Escriu el que has de comprar, paraula per paraula. Quan hagis acabat, escriu "feta!"`);
+// //! PROVISIONAL     if (item != "feta!" && item != null && item != "") arrLlista.push("- " + item);
+// //! PROVISIONAL } while (item != "feta!");
+
+// arrLlista.sort();
+// llistaCompra += arrLlista.join("\n");
+// console.log(llistaCompra);
+
 
 console.log("%c---------- Exercici 35 ----------", "color: green");
 // exercici 35: gestionar un CSV. El programa ha d'agafar un string en format CSV i ficar tota la informació dins un array
@@ -1040,6 +1144,19 @@ var csv = `Year,Make,Model,Description,Price
 
 // TODO gestionar el csv perquè acabi sent una cosa com la de sota
 
+cotxes = []         // Array dels quatre objectes, un de cada cotxe
+cotxes[0] = {}      // Primer cotxe (objecte) de l'array cotxes
+
+console.log(cotxes);
+
+// S'hauria de fer un bucle amb aquestes assignacions:
+cotxes[0][tags[0]] = array[0][0]    // Year = 1997
+cotxes[0][tags[1]] = array[0][1]    // Make = Ford
+
+
+
+// Resultat:
+
 // var cotxes = [ { Year = 1997,
 //                  Make = "Ford",
 //                  Model = "E350",
@@ -1052,6 +1169,7 @@ var csv = `Year,Make,Model,Description,Price
 //                  Description = "",
 //                  Price = 3000.00
 //                 } ];
+
 
 
 
