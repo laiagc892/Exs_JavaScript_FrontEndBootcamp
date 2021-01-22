@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10_Exercici</title>
+    <link rel="stylesheet" href="0_Exercicis.css">
+</head>
+<body>
+    <div class="form">
+        <h1>Calculadora</h1>
+        <div class="enL">
+            <h3>Operació:</h3>
+            <h3>Resultat</h3>
+        </div>
+        <div class="enL">
+            <input type="text" name="" id="num1" placeholder="Escriu el primer nombre...">
+            <select name="" id="op">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">x</option>
+                <option value="/">÷</option>
+                <option value="**">^</option>
+            </select>
+            <input type="text" name="" id="num2" placeholder="Escriu el segon nombre...">
+            <button id="=">=</button>
+            <input type="text" name="" id="resultat">
+            <!-- <p id="resultat"></p> -->
+    </div>
+
+    <script>
+        var b1 = document.querySelector("#convGr");
+        var temp1_i = document.querySelector("#tempO");
+        var temp2_p = document.querySelector("#tempC");
+        
+        b1.addEventListener("click", calculadora);
+        
+        function calculadora() {
+            var x = parseFloat(prompt("Introdueix el primer número de l'operació"));
+            
+            if (x == null || isNaN(x)) {    // Comprova el primer número
+                console.log(`%c"${x}" no és un número vàlid`, `color: red; font-weight: bold`);
+            }
+            
+            var s = prompt("Introdueix el símbol de l'operació: +, -, *, /, **(potència), arrel (quadrada) o arrel3 (cúbica)");
+            var symbols = ["+", "-", "*", "/", "**"];
+            
+            if (s != null && symbols.includes(s)) {
+                var y = parseFloat(prompt("Introdueix el segon número de l'operació"));
+                if (y == null || isNaN(y)) {    // Comprova el segon número
+                    console.log(`%c"${x}" no és un número vàlid`, `color: red; font-weight: bold`);
+                } else {
+                    if (s == "+") {
+                        console.log(`${x} + ${y} = ${x + y}`);
+                    } else if (s == "-") {
+                        console.log(`${x} - ${y} = ${x - y}`);
+                    } else if (s == "*") {
+                        console.log(`${x} * ${y} = ${x * y}`);
+                    } else if (s == "/" && y != 0) {
+                        console.log(`${x} / ${y} = ${x / y}`);
+                    } else if (s == "/" && y == 0) {    // excepció per dividir per 0
+                        console.log(`%c No es pot dividir per zero!`, "color: red");
+                    } else if (s == "**") {
+                        console.log(`${x} ** ${y} = ${x ** y}`);
+                    }
+                }
+            } else if (s != null && s.toLowerCase() == "arrel") {
+                console.log(`√${x} = ${Math.sqrt(x)}`);
+            } else if (s != null && s.toLowerCase() == "arrel3") {
+                console.log(`3√${x} = ${Math.cbrt(x)}`);
+            }
+            else {
+                console.log(`%c"${s}" no és una operació vàlida`, `color: red; font-weight: bold`);
+            }
+            
+        }
+    </script>
+</body>
+</html>

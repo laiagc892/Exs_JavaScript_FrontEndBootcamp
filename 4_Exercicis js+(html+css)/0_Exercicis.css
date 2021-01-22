@@ -11,7 +11,7 @@ div{
     margin: 1em auto;
 }
 .form{
-    width: 500px;
+    width: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,6 +33,7 @@ input{
     border-style: solid;
 }
 button{
+    min-width: 100px;
     margin: 5px;
     padding: 10px;
     text-align: center;
@@ -57,5 +58,9 @@ select{
 }
 h3{
     margin: 1em 0;
+    color: rgb(55, 73, 24);
+}
+h1{
+    text-align: center;
     color: rgb(55, 73, 24);
 }
