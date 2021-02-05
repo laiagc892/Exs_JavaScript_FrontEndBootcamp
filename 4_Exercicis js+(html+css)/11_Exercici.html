@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11_Exercici</title>
+    <!-- <link rel="stylesheet" href="0_Exercicis.css"> -->
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            margin: 3em auto;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        /* CALCULATOR (https://www.cssacademy.com/blog/create-a-calculator-in-html-and-css) */
+        .calculator {
+            border-radius: 10px;
+            box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15), 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+            margin-inline-start: auto;
+            margin-inline-end: auto;
+            margin-block-start: 2em;
+            max-inline-size: 22rem;
+            overflow: hidden;
+            color: hsl(202, 11%, 29%);
+        }
+        .calculator__output {
+            background: hsl(207, 19%, 61%); /* Change the background to a dark gray */
+            font-size: 4.2rem;
+            padding-block-start: 3rem;
+            padding-block-end: 0.5rem;
+            padding-inline-end: 1.25rem;
+            text-align: end;
+        }
+        .calculator__keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 1px;
+            background: hsl(207, 19%, 61%); /* Change the background to a dark gray */
+            padding: 0.5rem;
+        }
+        .calculator__key {
+            background: hsl(206, 14%, 41%); /* Change the keys to a darker gray */
+            color: hsl(255, 100%, 100%); /* Change the text color to white */
+            border: none;
+            padding-block-start: 1rem;
+            padding-block-end: 1rem;
+            padding-inline-end: 1.25rem;
+            padding-inline-start: 1.25rem;
+            font-size: 1.5rem;
+            /* Playful Styles */
+            inline-size: 70px;
+            block-size: 70px;
+            margin: 0.25rem;
+            border-radius: 40px;
+        }
+        .calculator__key:active,
+        .calculator__key:focus {
+            box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3) inset;
+            outline: none;
+        }
+        .calculator__key--operator {
+            background: hsl(208, 25%, 86%);
+            color: hsl(202, 11%, 29%);
+        }
+        .calculator__key--operator:active,
+        .calculator__key--operator:focus {
+            background: hsl(208, 24%, 80%);
+        }
+        .calculator__key--enter {
+            grid-column: 4 / 5;
+            grid-row: 2 / span 4;
+            background: hsl(357, 100%, 72%);
+            color: hsl(202, 11%, 29%);
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div value="0" class="calculator__output">0</div>
+        <div class="calculator__keys">
+            <button value="+" class="calculator__key calculator__key--operator">+</button>
+            <button value="-" class="calculator__key calculator__key--operator">-</button>
+            <button value="*" class="calculator__key calculator__key--operator">&times;</button>
+            <button value="/" class="calculator__key calculator__key--operator">÷</button>
+            <button value="7" class="calculator__key calculator__key--number">7</button>
+            <button value="8" class="calculator__key calculator__key--number">8</button>
+            <button value="9" class="calculator__key calculator__key--number">9</button>
+            <button value="4" class="calculator__key calculator__key--number">4</button>
+            <button value="5" class="calculator__key calculator__key--number">5</button>
+            <button value="6" class="calculator__key calculator__key--number">6</button>
+            <button value="1" class="calculator__key calculator__key--number">1</button>
+            <button value="2" class="calculator__key calculator__key--number">2</button>
+            <button value="3" class="calculator__key calculator__key--number">3</button>
+            <button value="0" class="calculator__key calculator__key--number">0</button>
+            <button value="." class="calculator__key calculator__key--dot">.</button>
+            <button value="0" class="calculator__key calculator__key--clear">AC</button>
+            <button value="=" class="calculator__key calculator__key--enter">=</button>
+        </div>
+    </div>
+    
+    <script>
+        var output = document.querySelector(".calculator__output");
+        var ops = document.querySelectorAll(".calculator__key--operator");
+        var nums = document.querySelectorAll(".calculator__key--number");
+        var dot = document.querySelector(".calculator__key--dot");
+        var AC = document.querySelector(".calculator__key--clear");
+        var equal = document.querySelector(".calculator__key--enter");
+        
+        AC.addEventListener("click", () => output.innerHTML = 0);
+        
+        nums.forEach((num) => {
+            num.addEventListener("click", () => {
+                if (output.innerHTML == "0") output.innerHTML = num.value;
+                else output.innerHTML += num.value;
+            });
+        });
+        
+        dot.addEventListener("click", () => {
+            if (!output.innerHTML.includes(dot.value)) output.innerHTML += dot.value;
+        });
+        
+        ops.forEach(op => {
+            op.addEventListener("click", () => {
+                let x = output.innerHTML.value;
+                let op = op.value;
+            });
+        });
+        
+        console.log(x);
+        console.log(op);
+        
+        
+        // CALCULADORA
+        function calculadora() {
+            if (s == "+") {
+                        res.value = x + y;
+                    } else if (s == "-") {
+                        res.value = x - y;
+                    } else if (s == "*") {
+                        res.value = x * y;
+                    } else if (s == "/" && y != 0) {
+                        res.value = x / y;
+                    } else if (s == "/" && y == 0) {    // excepció per dividir per 0
+                        wr.innerHTML = "No es pot dividir per zero!";
+                    // } else if (s == "**") {
+                    //     res.value = x ** y;
+                    }
+        }
+        
+        // else if (s == "**") {
+            //                 console.log(`${x} ** ${y} = ${x ** y}`);
+            //             }
+            //         }
+            //     } else if (s != null && s.toLowerCase() == "arrel") {
+                //         console.log(`√${x} = ${Math.sqrt(x)}`);
+                //     } else if (s != null && s.toLowerCase() == "arrel3") {
+                    //         console.log(`3√${x} = ${Math.cbrt(x)}`);
+                    //     }
+                    
+                </script>
+            </body>
+            </html>

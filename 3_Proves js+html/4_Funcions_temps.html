@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4_Funcions_temps</title>
+</head>
+<body>
+
+                <!-- COPIAR ARXIU OMAR -->
+
+    <p id="data">Data: </p>
+    <textarea name="" id="input" cols="30" rows="10"></textarea>
+    <div id="output"></div>
+
+    <script>
+        var input = document.querySelector("#input");
+        var output = document.querySelector("#output");
+
+        setInterval(() => {
+            output.innerHTML = input.value;
+        }, 2000);
+
+        var data = document.querySelector("#data");
+
+        var i = 0;
+        var timer = setInterval(() => {
+            data.innerHTML = "Data: " + new Date;
+            i++;
+
+            if (i == 10) clearInterval(timer);
+        }, 1000);
+    </script>
+</body>
+</html>

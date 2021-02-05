@@ -268,7 +268,7 @@ console.log("%c---------- Exercici 11 ----------", "color: green");
 //! PROVISIONAL     if (s != null && symbols.includes(s)) {
 //! PROVISIONAL         var y = parseFloat(prompt("Introdueix el segon número de l'operació"));
 //! PROVISIONAL         if (y == null || isNaN(y)) {    // Comprova el segon número
-//! PROVISIONAL             console.log(`%c"${x}" no és un número vàlid`, `color: red; font-weight: bold`);
+//! PROVISIONAL             console.log(`%c"${y}" no és un número vàlid`, `color: red; font-weight: bold`);
 //! PROVISIONAL         } else {
 //! PROVISIONAL             if (s == "+") {
 //! PROVISIONAL                 console.log(`${x} + ${y} = ${x + y}`);

@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>7_Exercici</title>
     <link rel="stylesheet" href="0_Exercicis.css">
+    <style>
+        input#color{
+            padding: 1px 2px;
+            width: 30px;
+            height: 30px;
+        }
+    </style>
 </head>
 <body>
     <div class="form">
-        <div>
+        <div class="enL">
             <label for="colorS">Selecciona el color del teu nom:</label>
             <input type="color" name="colorS" id="color">
         </div>
@@ -27,7 +34,7 @@
             var colorEsc = document.querySelector("#color");
             h.style.color = colorEsc.value;
             h.innerHTML = `Hola, ${nom.value}! `;
-            });
+        });
     </script>
 </body>
 </html>

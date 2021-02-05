@@ -23,57 +23,47 @@
                 <option value="**">^</option>
             </select>
             <input type="text" name="" id="num2" placeholder="Escriu el segon nombre...">
-            <button id="=">=</button>
-            <input type="text" name="" id="resultat">
-            <!-- <p id="resultat"></p> -->
-    </div>
-
-    <script>
-        var b1 = document.querySelector("#convGr");
-        var temp1_i = document.querySelector("#tempO");
-        var temp2_p = document.querySelector("#tempC");
-        
-        b1.addEventListener("click", calculadora);
-        
-        function calculadora() {
-            var x = parseFloat(prompt("Introdueix el primer número de l'operació"));
+            <button id="igual">=</button>
+            <input type="text" name="" id="resultat" readonly>
+        </div>
+        <div class="centerT">
+            <p class="wrong"></p>
+        </div>
+        <script>
+            var b1 = document.querySelector("#igual");
+            var n1 = document.querySelector("#num1");
+            var n2 = document.querySelector("#num2");
+            var wr = document.querySelector(".wrong");
+            var res = document.querySelector("#resultat");
             
-            if (x == null || isNaN(x)) {    // Comprova el primer número
-                console.log(`%c"${x}" no és un número vàlid`, `color: red; font-weight: bold`);
-            }
+            b1.addEventListener("click", calculadora);
             
-            var s = prompt("Introdueix el símbol de l'operació: +, -, *, /, **(potència), arrel (quadrada) o arrel3 (cúbica)");
-            var symbols = ["+", "-", "*", "/", "**"];
-            
-            if (s != null && symbols.includes(s)) {
-                var y = parseFloat(prompt("Introdueix el segon número de l'operació"));
-                if (y == null || isNaN(y)) {    // Comprova el segon número
-                    console.log(`%c"${x}" no és un número vàlid`, `color: red; font-weight: bold`);
+            function calculadora() {
+                var x = n1.value;
+                var s = document.querySelector("#op option:checked").value;
+                var y = n2.value;
+                
+                if (x == null || isNaN(x) || y == null || isNaN(y)) {
+                    wr.innerHTML = `El primer número "${n1.value}" i/o el segon "${n2.value}" no son un número vàlid`;
                 } else {
+                    wr.innerHTML = "";
+                    var x = parseFloat(n1.value);
+                    var y = parseFloat(n2.value);
                     if (s == "+") {
-                        console.log(`${x} + ${y} = ${x + y}`);
+                        res.value = x + y;
                     } else if (s == "-") {
-                        console.log(`${x} - ${y} = ${x - y}`);
+                        res.value = x - y;
                     } else if (s == "*") {
-                        console.log(`${x} * ${y} = ${x * y}`);
+                        res.value = x * y;
                     } else if (s == "/" && y != 0) {
-                        console.log(`${x} / ${y} = ${x / y}`);
+                        res.value = x / y;
                     } else if (s == "/" && y == 0) {    // excepció per dividir per 0
-                        console.log(`%c No es pot dividir per zero!`, "color: red");
+                        wr.innerHTML = "No es pot dividir per zero!";
                     } else if (s == "**") {
-                        console.log(`${x} ** ${y} = ${x ** y}`);
+                        res.value = x ** y;
                     }
                 }
-            } else if (s != null && s.toLowerCase() == "arrel") {
-                console.log(`√${x} = ${Math.sqrt(x)}`);
-            } else if (s != null && s.toLowerCase() == "arrel3") {
-                console.log(`3√${x} = ${Math.cbrt(x)}`);
             }
-            else {
-                console.log(`%c"${s}" no és una operació vàlida`, `color: red; font-weight: bold`);
-            }
-            
-        }
-    </script>
-</body>
-</html>
+        </script>
+    </body>
+    </html>
