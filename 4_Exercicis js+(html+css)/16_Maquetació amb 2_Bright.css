@@ -1,0 +1,63 @@
+body{
+    max-width: 1024px;
+    margin: 20px auto;
+    background-color: wheat;
+    background-repeat: repeat;
+    background-size: contain;
+}
+ul{
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    text-align: left;
+}
+/* Menú a un costat */
+ul li{
+    display: inline-block;
+    border: 3px solid crimson;
+    border-radius: 3px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* Links de menú sense "punts" de llista */
+ul li a{
+    display: inline-block;
+    text-decoration: none;
+    color:black;
+    padding: 10px 105px;
+}
+div{
+    margin: 0 0 3em 0;
+}
+div.fl{
+    display: flex;
+}
+h1, h2, h3{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    margin: 0 0 20px 0;
+}
+h1{
+    font-size: 10em;
+    color: crimson;
+    transform: rotate(-90deg) translate(-460px, -650px);
+    margin: -200px 0 0 0;
+    padding: 0;
+}
+h3{
+    background-color: crimson;
+    text-align: center;
+}
+p{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: medium;
+    color: black;
+}
+img.sideleft{
+    float: left;
+    height: 400px;
+}
+img.sideright{
+    float: right;
+    height: 400px;
+}
