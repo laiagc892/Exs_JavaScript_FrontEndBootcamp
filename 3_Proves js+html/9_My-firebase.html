@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9_My-firebase</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        body{
+            width: 800px;
+            margin: 2em auto;
+        }
+        /* .all{
+            margin: 0 50px;
+        } */
+        h1{
+            text-align: center;
+        }
+        h3{
+            margin: 1em 0;
+        }
+        p{
+            margin: 0;
+        }
+        .form{
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            padding: 5px 10px;
+            background-color: lightskyblue;
+            border-radius: 10px;
+        }
+        input, textarea{
+            width: 400px;
+            font-size: 1em;
+            margin: 5px 0;
+            padding: 5px 10px;
+            border: 2px solid lightskyblue;
+            border-radius: 10px;
+        }
+        button{
+            width: 200px;
+            font-size: 1em;
+            margin: 5px 0;
+            padding: 5px 10px;
+            border-color: lightskyblue;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        #allMess{
+            display: flex;
+            flex-direction: column-reverse;
+            list-style: none;
+        }
+        #allMess li{
+            border-radius: 10px;
+            background-color: lightskyblue;
+            margin: 2px;
+            padding: 5px 10px;
+            width: fit-content;
+        }
+        .twit-user{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <h3>Escriu un missatge:</h3>
+        <div class="form">
+            <input type="text" id="user" placeholder="Usuari...">
+            <textarea name="" id="mess" cols="30" rows="10" placeholder="Missatge..."></textarea>
+            <button id="send">Envia</button>
+            <button id="refresh">Mostra els missatges</button>
+        </div>
+        
+        <h3>Missatges:</h3>
+        <ul id="allMess"></ul>
+    </div>
+    
+    <script>
+        const database = "https://prova-firebase-2d386-default-rtdb.firebaseio.com/"
+        
+        var user = document.querySelector("#user");
+        var mess = document.querySelector("#mess");
+        var send = document.querySelector("#send");
+        var refresh = document.querySelector("#refresh");
+        var allMess = document.querySelector("#allMess");
+        
+        // GET inicial ------------------------------------------------------------ ------------------------------------------------------------
+        getM()                                                                          // Carrega els missatges a l'iniciar la pàgina
+
+        // POST ------------------------------------------------------------ ------------------------------------------------------------
+        send.addEventListener("click", () => postM(user.value, mess.value))             // POST Click
+        
+        function postM(usuari, text) {                                                  // POST Funció. Posteja el missatge
+            if(!usuari || !text) return console.log("Usuari o missatge no vàlid!");     // Si algun camp està buit, no s'envia res i surt de la funció
+            fetch(database + "missatges.json", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({  user: `${usuari}`,
+                                        message: `${text}`,
+                                        date: Date.now()
+                })
+            })
+            .then(res => res.json())
+            .then(res => console.log(res));
+            allMess.innerHTML += `<li><p class="twit-user">${usuari}</p><p>${text}</p></li>`;
+            user.value = "";                                                            // Buidar el formulari
+            mess.value = "";
+        }
+        
+        // GET ------------------------------------------------------------ ------------------------------------------------------------
+        refresh.addEventListener("click", () => getM())                                 // GET Click
+        
+        function getM() {                                                               // GET Funció. Carrega tots els missatges actuals
+            fetch(database + "missatges.json")
+            .then(res => res.json())
+            .then(res => {
+                var missatges = res;
+                console.log(missatges);
+                
+                allMess.innerHTML = "";                                                 // Buida el contingut abans de reescriure¡l, perquè no escrigui més d'una vegada el mateix
+                for (idM in missatges) {
+                    allMess.innerHTML += `<li data-id="${idM}"><p class="twit-user">${missatges[idM].user}</p><p>${missatges[idM].message}</li></p>`
+                }
+            });
+        }
+
+        // DELETE ------------------------------------------------------------ ------------------------------------------------------------
+        function deleteM(id) {
+            // var id = ntgrhusio.getAttribute("li data-id");
+            fetch(database + `missatges/${id}.json`, {
+                method: 'DELETE',
+            })
+            .then(res => res.json())
+            .then(res => console.log(res))
+        }
+
+        // PATCH ------------------------------------------------------------ ------------------------------------------------------------
+        function patchM(id, obj) {
+            fetch(database + `missatges/${id}.json`, {
+                method: 'PATCH',
+                body: JSON.stringify(obj)
+            })
+            .then(res => res.json())
+            .then(res => console.log(res))
+        }
+
+        // PUT ------------------------------------------------------------ ------------------------------------------------------------
+        function patchM(id, obj) {
+            fetch(database + `missatges/${id}.json`, {
+                method: 'PUT',
+                body: JSON.stringify(obj)
+            })
+            .then(res => res.json())
+            .then(res => console.log(res))
+        }
+    </script>
+</body>
+</html>

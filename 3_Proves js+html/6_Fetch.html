@@ -36,10 +36,10 @@
     <ul id="pla">
     </ul>
     <!-- ------------- Planets residents ------------- -->
-    <h3>2. Planets with their residents</h3>
+    <h3>2. Planets with their character residents</h3>
     <p>Recuperar de la SWAPI un llistat de planetes amb el llistat de residents que té cadascún (el nom):
     </p>
-    <ul id="resi">
+    <ul id="resi"><img src="https://tenor.com/bdIYo.gif" alt="baby yoda 'tries very hard' gif">
     </ul>
     <!-- ------------- Planets list ------------- -->
     <h3>3. All planets we saw in the galaxy</h3>
@@ -49,81 +49,87 @@
     </ol>
     
     <script>
-        var charact = document.querySelector("#char");
-        fetch("https://swapi.dev/api/people/")          // ------------- Characters ------------- 
-        .then(res => res.json())
-        .then(res => {
-            var people = res.results;
-            console.log(people);
+        var charact = document.querySelector("#char");      // --------------------------------------- Characters --------------------------------------- 
+        fetch("https://swapi.dev/api/people/")
+        .then(info => info.json())
+        .then(info => {
+            var people = info.results;
+            // console.log(people);
             for (const character of people) {
-                charact.innerHTML += `<li>${character.name} is from ${character.homeworld}.</li>`;
+                
             }
+            charact.innerHTML += `<li>${character.name} is from ${character.homeworld}.</li>`;
         })
-
-        var characters = document.querySelector("#pla");
-        fetch("https://swapi.dev/api/planets/")         // ------------- Planets sorted ------------- 
+        
+        var characters = document.querySelector("#pla");    // --------------------------------------- Planets sorted --------------------------------------- 
+        fetch("https://swapi.dev/api/planets/")
         .then(res => res.json())
         .then(res => {
             var planets = res.results;
             // console.log(planets);
-
+            
             var planetsSorted = planets.sort((a, b) => a.diameter - b.diameter);
             // console.log(planetsSorted);
-
+            
             for (const planet of planetsSorted) {
                 pla.innerHTML += `<li>${planet.diameter} is ${planet.name}'s diameter.</li>`;
             }
         })
-
-        var residentChar = document.querySelector("#resi");
-        fetch("https://swapi.dev/api/planets/")         // ------------- Planets residents ------------- 
-            .then(res => res.json())
-            .then(res => {
-                var planets = res.results;
-                for (const planet of planets) {
-                    var planetName = planet.name;
-
-                    var urlResidents = planet.residents;
-                    console.log(urlResidents);
-
-                    if (urlResidents) {
-                        for (const resident of urlResidents) {
-                            fetch(resident)
-                            .then(res => res.json())
-                            .then (res => {
-                                resident = res.name;
-                                console.log(resident);
-                                var planetResidents = [];
-                                // planetResidents.push(resident);
-                                // console.log(planetResidents);
-                            })
-                        }
-                    } else planetResidents = "none lived here";
-                    // residentChar.innerHTML += `<li>Residents of ${planetName}: ${planetResidents}.</li>`;
-                }
-            })
-
-        // function planetInfo() {
+        
+        var residentChar = document.querySelector("#resi"); // --------------------------------------- Planets residents --------------------------------------- 
+        async function residents(apiUrl) {
+            var planets = await fetch(apiUrl)
+            planets = await planets.json();                 // Recupero els planetes
             
-        // }
-
-        var allPlanets = document.querySelector("#allPla");
-        function paginaAPI(url) {                       // ------------- Planets list ------------- 
+            for (const planet of planets.results) {         // Recorro els planetes
+                console.log(planet.name);
+                console.log(planet.residents);
+                
+                arrList(planet.residents, planet.name);     // Crida funció ARRAY
+            }
+        }
+        
+        async function arrList(urls, name) {                // Funció ARRAY
+            var arrAux = []
+            for (url of urls){
+                var result = await fetch(url);
+                var res = await result.json();
+                console.log(res.name);
+                arrAux.push(res.name);
+            }
+            strList(arrAux, name);                          // Crida funció STRING
+        }
+        
+        function strList(arr, name) {                       // Funció STRING
+            var str = arr.join(", ");
+            strWrite(str, name)                             // Crida funció WRITE
+        }
+        
+        function strWrite(str, name) {                      // Funció WRITE
+            if(str) residentChar.innerHTML += `<li>Residents of ${name}: ${str}.</li>`;
+            else residentChar.innerHTML += `<li>Residents of ${name}: none.</li>`;
+        }
+        
+        residents("https://swapi.dev/api/planets/");        // Crida funció ALL
+        
+        
+        var allPlanets = document.querySelector("#allPla"); // --------------------------------------- Planets list --------------------------------------- 
+        function paginaAPI(url) {
             fetch(url)
             .then(res => res.json())
             .then (res => {
                 var nextUrl = res.next;
-
-                for(planet of res.results) {        // Escriu els planetes al DOM
+                
+                for(planet of res.results) {            // Escriu els planetes al DOM
                     allPlanets.innerHTML += `<li>${planet.name}</li>`;
                 }
-
-                if(nextUrl) paginaAPI(nextUrl)      // Si hi ha una pàgina més, fa un altre fetch
+                
+                if(nextUrl) paginaAPI(nextUrl)          // Si hi ha una pàgina més, fa un altre fetch
             })
         }
-
+        
         paginaAPI("https://swapi.dev/api/planets/");
-
+        
     </script>
 </body>
 </html>
