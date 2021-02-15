@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+body{
+    background-color: lemonchiffon;
+}
+.all{
+    width: 1024px;
+    margin: 1em auto;
+}
+.all h1{
+    text-align: center;
+    margin: 1em;
+}
+main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.cards, #lb{
+    width: 400px;
+    height: 400px;
+    margin: 5px;
+    padding: 10px;
+    background-color: mediumseagreen;
+    border-radius: 10px;
+}
+.card-head, .lb-head{
+    padding: 5px 10px;
+    background-color: rgba(255, 250, 205, 0.5);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-head h2{
+    text-align: center;
+}
+/* FONT AWSOME ICONS */
+.icons{
+    width: 20px;
+    height: 20px;
+    color: lemonchiffon;
+}
+/* ---------------------------------- LIGHTBOX ---------------------------------- */
+#black-overlay{
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+#lb{
+    margin: 300px auto;
+    border: 5px solid lemonchiffon;
+}
+#lb textarea{
+    width: 370px;
+    height: 100px;
+    margin: 10px 0;
+    padding: 5px;
+    border: none;
+    background-color: lemonchiffon;
+}
+#lb-save{
+    display: block;
+}
