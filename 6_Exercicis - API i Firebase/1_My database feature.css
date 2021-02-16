@@ -39,15 +39,26 @@ main{
 .card-head h2{
     text-align: center;
 }
+.card-notes{
+    margin: 1em 20px;
+}
+.card-notes ul li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 /* FONT AWSOME ICONS */
-.icons{
-    width: 20px;
-    height: 20px;
+i{
+    font-size: 15px;
+    margin: 0 5px;
     color: lemonchiffon;
+}
+.i-save:hover, .i-close:hover, .i-add:hover, .i-edit:hover, .i-delete:hover{
+    color: black;
 }
 /* ---------------------------------- LIGHTBOX ---------------------------------- */
 #black-overlay{
-    /* display: none; */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;

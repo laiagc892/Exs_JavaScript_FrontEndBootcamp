@@ -66,7 +66,7 @@
         
         // Tanca el lightbox al fer click a fora:
         window.addEventListener("click", (e) => {   // La paraula clau window es refereix a tota la zona de dins la finestra.
-            if (black_overlay.style.display == 'block' && !lb.contains(event.target)){      // Si hi ha l'overlay i el click no és en qualsevol cosa dins el lb, llavors...
+            if (black_overlay.style.display == 'block' && !lb.contains(e.target)){      // Si hi ha l'overlay i el click no és en qualsevol cosa dins el lb, llavors...
                 black_overlay.style.display = "none";
             }
         });

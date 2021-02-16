@@ -128,9 +128,9 @@
                 var missatges = res;
                 console.log(missatges);
                 
-                allMess.innerHTML = "";                                                 // Buida el contingut abans de reescriure¡l, perquè no escrigui més d'una vegada el mateix
+                allMess.innerHTML = "";                                                 // Buida el contingut abans de reescriure'l, perquè no escrigui més d'una vegada el mateix
                 for (idM in missatges) {
-                    allMess.innerHTML += `<li data-id="${idM}"><p class="twit-user">${missatges[idM].user}</p><p>${missatges[idM].message}</li></p>`
+                    allMess.innerHTML += `<li data-id="${idM}"><p class="twit-user">${missatges[idM].user}</p><p>${missatges[idM].message}</p></li>`
                 }
             });
         }

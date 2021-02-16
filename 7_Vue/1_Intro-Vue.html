@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1_Intro-Vue</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>      <!-- Importem el framework Vue.js -->
+
+    <style>
+        body{
+            width: 1024px;
+            margin: 2em 300px;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+        }
+        input{
+            width: 300px;
+            margin: 5px 0;
+        }
+        button{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- ----------------------------------------- prova Vue ----------------------------------------- -->
+    <h1 id="app">
+        {{ hi }} {{ name }} {{ punt }}     <!-- Templates vinculades a un objecte de Vue.js (plantilles) -->
+    </h1>
+
+    <script>
+        var app = new Vue({                         // Crea un nou objecte Vue.js
+            el: "#app",                             // El vincula amb un selector de CSS
+
+            data: {                                 // A l'objecte data guarda la informació
+                hi: "Hola, ",
+                name: "Singulars",
+                punt: ""
+            },
+
+            methods: {                              // A l'objecte methods guarda els mètodes
+                afegirAdmiracio: function () {
+                    this.punt += "!"                // this fa referència a l'objecte Vue.js
+                }
+            }
+        })
+    </script>
+
+    <!-- ----------------------------------------- 0. Amb query i value ----------------------------------------- -->
+    <h2>0. Amb query i value</h2>
+    <form>
+        <input id="name" type="text" placeholder="Nom">
+        <input id="sname" type="text" placeholder="Cognom">
+        <input id="adr" type="text" placeholder="Adreça">
+        <input id="pho" type="tel" name="" id="" placeholder="Telèfon">
+    </form>
+    <div id="file0">
+        <button v-on:click="write">Escriu</button>
+        <p>{{ name }} {{ surname }}</p>
+        <p>{{ adress }}</p>
+        <p>{{ phone }}</p>
+    </div>
+
+    <script>
+        var nom = document.querySelector("#name");
+        var cognom = document.querySelector("#sname");
+        var adreça = document.querySelector("#adr");
+        var telefon = document.querySelector("#pho");
+        
+        var file0 = new Vue({                           // Crea un nou objecte Vue.js
+            el: "#file0",                               // El vincula amb un selector de CSS
+            data: {                                     // A l'objecte data guarda la informació
+            name: "Nom?",
+            surname: "Cognom?",
+            adress: "Adreça?",
+            phone: "Telèfon?"
+            },
+            methods: {                                  // A l'objecte methods guarda els mètodes
+                write: function () {
+                    this.name = nom.value,
+                    this.surname = cognom.value,
+                    this.adress = adreça.value,
+                    this.phone = telefon.value
+                }
+            }
+        })
+    </script>
+
+    <!-- ----------------------------------------- 1. Es copia mentre escrius ----------------------------------------- -->
+    <h2>1. Es copia mentre escrius</h2>
+    <div id="file1">
+        <form>
+            <input v-model="name" type="text" placeholder="Nom">
+            <input v-model="surname" type="text" placeholder="Cognom">
+            <input v-model="adress" type="text" placeholder="Adreça">
+            <input v-model="phone" type="tel" name="" id="" placeholder="Telèfon">
+        </form>
+            <p>{{ name }} {{ surname }}</p>
+            <p>{{ adress }}</p>
+            <p>{{ phone }}</p>
+    </div>
+
+    <script>
+        var file1 = new Vue({                           // Crea un nou objecte Vue.js
+            el: "#file1",                               // El vincula amb un selector de CSS
+            data: {                                     // A l'objecte data guarda la informació
+            name: "",
+            surname: "",
+            adress: "",
+            phone: ""
+            },
+            methods: {}                                 // Es queda buit perquè no hi ha funcions (mètodes)
+        })
+    </script>
+
+    <!-- ----------------------------------------- 2. Escriu al fer clic ----------------------------------------- -->
+    <h2>2. Escriu al fer clic</h2>
+    <div id="file2">
+        <form>
+            <input v-model="nameV" type="text" placeholder="Nom">
+            <input v-model="surnameV" type="text" placeholder="Cognom">
+            <input v-model="adressV" type="text" placeholder="Adreça">
+            <input v-model="phoneV" type="tel" name="" id="" placeholder="Telèfon">
+        </form>
+        <button v-on:click="write">Escriu</button>
+            <p>{{ name }} {{ surname }}</p>
+            <p>{{ adress }}</p>
+            <p>{{ phone }}</p>
+    </div>
+
+    <script>
+        var file2 = new Vue({                           // Crea un nou objecte Vue.js
+            el: "#file2",                               // El vincula amb un selector de CSS
+            data: {                                     // A l'objecte data guarda la informació
+            name: "Nom?",
+            surname: "Cognom?",
+            adress: "Adreça?",
+            phone: "Telèfon?",
+            nameV: "",
+            surnameV: "",
+            adressV: "",
+            phoneV: ""
+            },
+            methods: {                                  // A l'objecte methods guarda els mètodes
+                write: function () {
+                    this.name = this.nameV,
+                    this.surname = this.surnameV,
+                    this.adress = this.adressV,
+                    this.phone = this.phoneV
+                }
+            }
+        })
+    </script>
+    
+    <!-- ----------------------------------------- 3. Ho envia en un console log al fer clic ----------------------------------------- -->
+    <h2>3. Ho envia en un console log al fer clic</h2>
+    <div id="file3">
+        <form>
+            <input v-model="nameV" type="text" placeholder="Nom">
+            <input v-model="surnameV" type="text" placeholder="Cognom">
+            <input v-model="adressV" type="text" placeholder="Adreça">
+            <input v-model="phoneV" type="tel" name="" id="" placeholder="Telèfon">
+        </form>
+        <button v-on:click="writeC">Escriu</button>
+    </div>
+
+    <script>
+        var file3 = new Vue({                           // Crea un nou objecte Vue.js
+            el: "#file3",                               // El vincula amb un selector de CSS
+            data: {                                     // A l'objecte data guarda la informació
+            nameV: "",
+            surnameV: "",
+            adressV: "",
+            phoneV: ""
+            },
+            methods: {                                  // A l'objecte methods guarda els mètodes
+                writeC: function () {
+                    console.log(this.nameV);
+                    console.log(this.surnameV);
+                    console.log(this.adressV);
+                    console.log(this.phoneV);
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>
