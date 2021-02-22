@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4_Components</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        body{
+            width: 1024px;
+            margin: 2em auto;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <hello-world v-bind:textdata="textdata1" textprop="Text escrit en línia dins l'atribut personalitzat que li he passat via props, primer."></hello-world>     <!-- Crido un component personalitzat -->
+        <h1>Hola, aquesta línia és h1 d'HTML normal.</h1>
+        <hello-world v-bind:textdata="textdata2" textprop="Text escrit en línia dins l'atribut personalitzat que li he passat via props, segon."></hello-world>
+
+        <h3>Llista creada renderitzant iterativament (amb v-for) un component personalitzat de Vue:</h3>
+        <ul>
+            <list-element v-for="item of toDoTodayAgain" v-bind:key="item.id" v-bind:who="item.who" v-bind:what="item.what" v-bind:how="item.how"></list-element>
+        </ul>
+    </div>
+
+    <script>
+        Vue.component("hello-world", {              // Inicialitzo un component personalitzat
+            props: ["textprop", "textdata"],        // les props (propietats) son com atributs personalitzats
+            template: `<div>
+                <h3>Hello world, I'm form a Vue component</h3>
+                <p>A. Text escrit directament al template del component.</p>
+                <p>B. {{ textprop }}</p>
+                <p>C. {{ textdata }}</p>
+                </div>`                             // És possible que, si posem noms compostos de més d'una paraula, en els atributs (css) s'hagin d'escriure amb guió entremig i quan es cridi com a variable s'hagin de posar en camelCase.
+        })
+
+        Vue.component("list-element", {
+            props: ["id", "who", "what", "how"],
+            template: `<li>També avui {{ who }} té intenció {{ what }} {{ how }}</li>`
+        })
+        
+        var app = new Vue({
+            el: "#app",
+            data: {
+                textdata1: "Text primer escrit al data.",
+                textdata2: "Text segon escrit al data.",
+                toDoTodayAgain: [    // array d'objectes
+                    {
+                        id: 0,
+                        who: "la Laia",
+                        what: "de jugar al Valorant",
+                        how: "amb noobs."
+                    },
+                    {
+                        id: 1,
+                        who: "l'Omar",
+                        what: "d'ensenyar Vue",
+                        how: "als preciosos alumnes."
+                    },
+                    {
+                        id: 2,
+                        who: "l'alumnat",
+                        what: "d'avançar el Projecte final",
+                        how: "amb i-l·lusió!"
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
