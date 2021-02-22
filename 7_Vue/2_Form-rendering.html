@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2_Form-rendering</title>
+    <script src="https://kit.fontawesome.com/c889951493.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>      <!-- Importem el framework Vue.js -->
+    <style>
+        body{
+            width: 1024px;
+            margin: 2em 300px;
+        }
+        input{
+            width: 300px;
+            margin: 5px 0;
+        }
+        button{
+            width: 100px;
+        }
+        .fa-times-circle{
+            color: red;
+        }
+        .fa-check-circle{
+            color: green;
+        }
+        .initially-hidden{
+            display: none;
+        }
+        .visible{
+            display: initial;
+        }
+    </style>
+</head>
+<body>
+    <!-- @click="", @change="", @keyup=""
+    <img v-if="variableCondició" src="" alt="">
+    <img v-else src="" alt=""> -->
+
+    <h2>Form rendering</h2>
+    <div id="file">
+        <form>
+            <!-- <div>
+                <input @keyup="checkWords" v-model="temp_name" type="text" placeholder="Nom">
+                <span class="initially-hidden" v-bind:class="{visible: NameVisible}">
+                    <i v-if="correctName" class="fas fa-check-circle"></i>
+                    <i v-else class="fas fa-times-circle"></i>
+                </span>
+            </div>
+            <div>
+                <input @keyup="checkWords" v-model="temp_surname" type="text" placeholder="Cognom">
+                <span class="initially-hidden" v-bind:class="{visible: surnameVisible}">
+                    <i v-if="correctSurname" class="fas fa-check-circle"></i>
+                    <i v-else class="fas fa-times-circle"></i>
+                </span>
+            </div> -->
+            <div>
+                <input v-model="temp_adress" type="text" placeholder="Adreça">
+            </div>
+            <div>
+                <input @keyup="checkCP" v-model="temp_cp" type="text" placeholder="C.P.">
+                <span class="initially-hidden" v-bind:class="{visible: cpVisible}">
+                    <i v-if="correctCP" class="fas fa-check-circle"></i>
+                    <i v-else class="fas fa-times-circle"></i>
+                </span>
+            </div>
+            <div>
+                <input @keyup="checkPhone" v-model="temp_phone" type="tel" name="" id="" placeholder="Telèfon">
+                <span class="initially-hidden" v-bind:class="{visible: phoneVisible}">
+                    <i v-if="correctPhone" class="fas fa-check-circle"></i>
+                    <i v-else class="fas fa-times-circle"></i>
+                </span>
+            </div>
+        </form>
+        <button @click="write">Escriu</button>
+            <p>{{ name }}</p>
+            <p>{{ surname }}</p>
+            <p>{{ adress }}</p>
+            <p>{{ cp }}</p>
+            <p>{{ phone }}</p>
+    </div>
+
+    <script>
+        var file = new Vue({                           // Crea un nou objecte Vue.js
+            el: "#file",                               // El vincula amb un selector de CSS
+            data: {                                     // A l'objecte data guarda la informació
+                name: "Nom: ",
+                surname: "Cognom: ",
+                adress: "Adreça: ",
+                cp: "C.P.: ",
+                phone: "Telèfon: ",
+                // ---------- Variables temporals:
+                temp_name: "",
+                temp_surname: "",
+                temp_adress: "",
+                temp_cp: "",
+                temp_phone: "",
+                // ---------- Comprovacions:
+                // correctWords: false,
+                correctCP: false,
+                correctPhone: false,
+                // ---------- Visibilitat:
+                cpVisible: false,
+                phoneVisible: false
+            },
+            methods: {                                  // A l'objecte methods guarda els mètodes
+                write: function () {
+                    this.name += this.temp_name;
+                    this.surname += this.temp_surname;
+                    this.adress += this.temp_adress;
+                    this.phone += this.temp_phone
+                },
+                // chekWords: function() {
+                //     this.visibility = "display: inline-block";
+                //     let letters = " ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+                //     if (letters.includes(this.temp_name)) {
+                //         this.correctWords = true;
+                //     } else this.correctWords = false;
+                // },
+                checkCP: function() {
+                    this.cpVisible = true;
+                    if (!isNaN(this.temp_cp) && this.temp_cp.length == 5) this.correctCP = true;
+                    else this.correctCP = false;
+                },
+                checkPhone: function() {
+                    this.phoneVisible = true;
+                    if (!isNaN(this.temp_phone) && this.temp_phone.length == 9) this.correctPhone = true;
+                    else this.correctPhone = false;
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

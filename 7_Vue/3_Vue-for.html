@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3_Vue-for</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>      <!-- Importem el framework Vue.js -->
+    <style>
+        body{
+            width: 1024px;
+            margin: 2em auto;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="today">
+        <h2>Què farem avui?</h2>
+        <h3>Llista d'un array:</h3>
+        <ul>
+            <li v-for="thing of listOfThings" >{{ thing }}</li>
+        </ul>
+        <h3>Llista d'objectes amb propietats dins d'un array, les variants de text amb v-for o l'estil amb v-bind:style:</h3>
+        <ul>
+            <li v-for="thing of toDoToday" v-bind:style="thing.color0">Avui {{ thing.who }} té intenció {{ thing.what }} {{ thing.with }}</li>
+        </ul>
+        <p>Llista anterior generada a partir de la següent llista d'objectes:</p>
+        <ul>
+            <li v-for="thing of toDoToday">{{ thing }}</li>
+        </ul>
+        <h3>Llista d'objectes amb propietats dins d'un array canviant style al v-bind:style:</h3>
+        <ul>
+            <li v-for="thing of toDoToday" v-bind:style="{color: thing.color, fontSize: thing.size}">Avui {{ thing.who }} té intenció {{ thing.what }} {{ thing.with }}</li>
+        </ul>
+        <h3>Llista d'objectes amb propietats dins d'un array canviant style linquejant  al v-bind:style un objecte de propietats "style" agrupant el que seria la string de style:</h3>
+        <ul>
+            <li v-for="thing of toDoToday" v-bind:style="thing.style">Avui {{ thing.who }} té intenció {{ thing.what }} {{ thing.with }}</li>
+        </ul>
+    </div>
+
+    <script>
+        var today = new Vue({
+            el: "#today",
+            data: {
+                listOfThings: ["Valorant", "Vue", "Projecte"],
+                toDoToday: [    // array d'objectes
+                    {
+                        who: "la Laia",
+                        what: "de jugar al Valorant",
+                        with: "amb noobs.",
+                        color0: "color: orange",
+                        color: "orange",
+                        size: "1em",
+                        style: {
+                            color: "orange",
+                            fontSize: "1em",
+                            fontStyle: "italic"
+                        }
+                    },
+                    {
+                        who: "l'Omar'",
+                        what: "d'ensenyar Vue",
+                        with: "als preciosos alumnes.",
+                        color0: "color: green",
+                        color: "green",
+                        size: "1.2em",
+                        style: {
+                            color: "green",
+                            fontSize: "1.2em",
+                            fontWeight: "bold"
+                        }
+                    },
+                    {
+                        who: "l'alumnat",
+                        what: "d'avançar el Projecte final",
+                        with: "amb i-l·lusió!",
+                        color0: "color: purple",
+                        color: "purple",
+                        size: "1.4em",
+                        style: {
+                            color: "purple",
+                            fontSize: "1.4em",
+                            fontVariant: "small-caps"
+                        }
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
