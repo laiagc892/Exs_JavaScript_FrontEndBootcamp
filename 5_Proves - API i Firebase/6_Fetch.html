@@ -56,9 +56,8 @@
             var people = info.results;
             // console.log(people);
             for (const character of people) {
-                
+                charact.innerHTML += `<li>${character.name} is from ${character.homeworld}.</li>`;
             }
-            charact.innerHTML += `<li>${character.name} is from ${character.homeworld}.</li>`;
         })
         
         var characters = document.querySelector("#pla");    // --------------------------------------- Planets sorted --------------------------------------- 
@@ -82,8 +81,8 @@
             planets = await planets.json();                 // Recupero els planetes
             
             for (const planet of planets.results) {         // Recorro els planetes
-                console.log(planet.name);
-                console.log(planet.residents);
+                // console.log(planet.name);
+                // console.log(planet.residents);
                 
                 arrList(planet.residents, planet.name);     // Crida funció ARRAY
             }
@@ -94,7 +93,7 @@
             for (url of urls){
                 var result = await fetch(url);
                 var res = await result.json();
-                console.log(res.name);
+                // console.log(res.name);
                 arrAux.push(res.name);
             }
             strList(arrAux, name);                          // Crida funció STRING
